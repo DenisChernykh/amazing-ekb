@@ -11,7 +11,7 @@
     "generate": "pnpm prisma generate",
     "seed": "pnpm tsx prisma/seeds/seed.ts",
     "postinstall": "pnpm generate",
-    "vercel-build": "pnpm generate && pnpm migrate && pnpm build"
+    "vercel-build": "pnpm generate && pnpm migrate && pnpm seed && pnpm build"
   },
   "dependencies": {
     "@prisma/client": "6.5.0",
