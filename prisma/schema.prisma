@@ -38,7 +38,7 @@ model Image {
   updatedAt DateTime @updatedAt
   url       String
   altText   String
-  mainPhoto Boolean
+  mainPhoto Boolean?
   post      Post?    @relation(fields: [postId], references: [id])
   postId    String?
 }
