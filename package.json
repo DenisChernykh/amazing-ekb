@@ -9,12 +9,14 @@
     "lint": "next lint",
     "migrate": "pnpm prisma migrate deploy",
     "generate": "pnpm prisma generate",
+    "pmd": "pnpm prisma migrate dev",
     "seed": "pnpm tsx prisma/seeds/seed.ts",
     "postinstall": "pnpm generate",
     "vercel-build": "pnpm generate && pnpm migrate && pnpm seed && pnpm build"
   },
   "dependencies": {
     "@prisma/client": "6.5.0",
+    "@radix-ui/react-aspect-ratio": "^1.1.2",
     "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",
     "class-variance-authority": "^0.7.1",

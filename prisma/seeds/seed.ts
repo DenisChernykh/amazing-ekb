@@ -62,7 +62,7 @@ async function main() {
 					data: {
 						title: 'Люкc в Hyatt REGENCY',
 						description: 'Эстетичный отель с вдохновляющим видом на вечерний Екатеринбург',
-						Category: {
+						category: {
 							connect: { id: categories[1].id }
 						},
 						images: {
@@ -112,7 +112,7 @@ async function main() {
 					data: {
 						title: 'Термы Вода',
 						description: 'Термы с отелем для релакса',
-						Category: {
+						category: {
 							connect: { id: categories[0].id }
 						},
 						images: {
@@ -152,7 +152,7 @@ async function main() {
 					data: {
 						title: 'Мастер-класс по картине акрилом',
 						description: 'МАСТЕР-КЛАСС ПО КАРТИНЕ АКРИЛОМ: КОГДА ИСКУССТВО РАЗГОВАРИВАЕТ С ТВОИМ ПОДСОЗНАНИЕМ 🎨🌀',
-						Category: {
+						category: {
 							connect: { id: categories[2].id }
 						},
 						images: {
