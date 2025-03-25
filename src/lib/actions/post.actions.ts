@@ -27,3 +27,15 @@ export async function getPosts() {
 	}
 }
 
+export async function getImagesById(id: string) {
+	try {
+		const images = await prisma.image.findMany({
+			where: {
+				postId: id
+			}
+		})
+		return images
+	} catch (error) {
+		console.error("Ошибка получения изображений:", error);
+	}
+}

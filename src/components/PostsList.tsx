@@ -2,15 +2,24 @@
 
 import { useState } from 'react';
 import Filter from './shared/Filter';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from './ui/card';
 import { AspectRatio } from './ui/aspect-ratio';
 import Image from 'next/image';
 import { Badge } from './ui/badge';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 type Post = {
   id: string;
   title: string;
   category: Category;
+  description: string;
   images: Array<{
     id: string;
     mainPhoto: boolean | null;
@@ -45,10 +54,11 @@ function PostsList({ initialPosts, categories }: PostsListProps) {
           return (
             <Card key={post.id}>
               <CardContent className=" relative">
-                <AspectRatio ratio={3 / 4}>
+                <AspectRatio ratio={16 / 9}>
                   {isMainPhoto && (
                     <Image
                       fill
+                      objectFit="cover"
                       src={isMainPhoto.url}
                       alt={isMainPhoto.altText}
                     />
@@ -59,8 +69,17 @@ function PostsList({ initialPosts, categories }: PostsListProps) {
                 <CardTitle> {post.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                {post.category && <Badge>{post.category.name}</Badge>}
+                {post.category && (
+                  <Badge className=" mb-4">{post.category.name}</Badge>
+                )}
+                <p>{post.description}</p>
               </CardContent>
+              <CardFooter className=" flex justify-between">
+                <Link href={`/place/${post.id}`}>
+                  <Button>Галерея</Button>
+                </Link>
+                <Button>Обзор в канале</Button>
+              </CardFooter>
             </Card>
           );
         })}
