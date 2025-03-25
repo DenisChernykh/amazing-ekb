@@ -32,6 +32,12 @@ export async function getImagesById(id: string) {
 		const images = await prisma.image.findMany({
 			where: {
 				postId: id
+			},
+			select: {
+				id: true,
+				mainPhoto: true,
+				url: true,
+				altText: true
 			}
 		})
 		return images

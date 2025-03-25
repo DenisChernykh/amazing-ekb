@@ -47,7 +47,7 @@ function PostsList({ initialPosts, categories }: PostsListProps) {
         onFilterChange={setSelectedCategory}
         categories={categories}
       />
-      <div className="space-y-4 md:grid grid-cols-3 gap-4">
+      <div className="space-y-4 md:space-y-0 md:grid grid-cols-3 gap-4">
         {filteredPosts.map((post) => {
           const isMainPhoto = post.images.find((image) => image.mainPhoto);
 
@@ -74,7 +74,7 @@ function PostsList({ initialPosts, categories }: PostsListProps) {
                 )}
                 <p>{post.description}</p>
               </CardContent>
-              <CardFooter className=" flex justify-between">
+              <CardFooter className=" flex justify-between mt-auto">
                 <Link href={`/place/${post.id}`}>
                   <Button>Галерея</Button>
                 </Link>
