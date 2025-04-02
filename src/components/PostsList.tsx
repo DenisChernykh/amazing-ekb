@@ -87,7 +87,7 @@ function PostsList({ initialPosts, categories }: PostsListProps) {
                     const WebApp = (await import('@twa-dev/sdk')).default;
                     WebApp.openLink(postLink);
                   }}
-                ></Button>
+                >Обзор на канале</Button>
               </CardFooter>
             </Card>
           );
