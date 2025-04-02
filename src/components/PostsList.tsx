@@ -14,7 +14,7 @@ import Image from 'next/image';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import Link from 'next/link';
-import WebApp from '@twa-dev/sdk';
+
 
 type Post = {
   id: string;
@@ -82,10 +82,12 @@ function PostsList({ initialPosts, categories }: PostsListProps) {
                   <Button>Галерея</Button>
                 </Link>
                 <Button
-                  onClick={() => WebApp.openLink(`https://t.me/${postLink}`)}
-                >
-                  В канал
-                </Button>
+                  onClick={async () => {
+                    if (typeof window === 'undefined') return;
+                    const WebApp = (await import('@twa-dev/sdk')).default;
+                    WebApp.openLink(postLink);
+                  }}
+                ></Button>
               </CardFooter>
             </Card>
           );

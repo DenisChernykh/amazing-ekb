@@ -1,6 +1,5 @@
 'use client';
 
-import WebApp from '@twa-dev/sdk';
 import { useEffect } from 'react';
 
 export default function ClientProviders({
@@ -9,10 +8,11 @@ export default function ClientProviders({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    import('@twa-dev/sdk').then((module) => {
+      const WebApp = module.default; 
       WebApp.ready();
       WebApp.expand();
-    }
+    });
   }, []);
 
   return <>{children}</>;
