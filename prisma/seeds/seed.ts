@@ -105,7 +105,8 @@ async function main() {
 									altText: 'Сюрприз',
 								},
 							]
-						}
+						},
+						postUrl: '152'
 					}
 				}),
 				prisma.post.create({
@@ -145,7 +146,8 @@ async function main() {
 								},
 
 							]
-						}
+						},
+						postUrl: '204'
 					}
 				}),
 				prisma.post.create({
@@ -183,7 +185,8 @@ async function main() {
 
 
 							]
-						}
+						},
+						postUrl: '233'
 					}
 				}),
 			])

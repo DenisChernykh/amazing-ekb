@@ -14,6 +14,7 @@ import Image from 'next/image';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import Link from 'next/link';
+import WebApp from '@twa-dev/sdk';
 
 type Post = {
   id: string;
@@ -26,6 +27,7 @@ type Post = {
     url: string;
     altText: string;
   }>;
+  postUrl: string;
 };
 type Category = { id: string; name: string };
 type PostsListProps = {
@@ -40,6 +42,7 @@ function PostsList({ initialPosts, categories }: PostsListProps) {
     (post) =>
       selectedCategory === 'all' || post.category.name === selectedCategory
   );
+
   return (
     <>
       <Filter
@@ -50,7 +53,7 @@ function PostsList({ initialPosts, categories }: PostsListProps) {
       <div className="space-y-4 md:space-y-0 md:grid grid-cols-3 gap-4">
         {filteredPosts.map((post) => {
           const isMainPhoto = post.images.find((image) => image.mainPhoto);
-
+          const postLink = `https://t.me/tanya_strelchuk_blog/${post.postUrl}`;
           return (
             <Card key={post.id}>
               <CardContent className=" relative">
@@ -78,7 +81,11 @@ function PostsList({ initialPosts, categories }: PostsListProps) {
                 <Link href={`/place/${post.id}`}>
                   <Button>Галерея</Button>
                 </Link>
-                <Button>Обзор в канале</Button>
+                <Button
+                  onClick={() => WebApp.openLink(`https://t.me/${postLink}`)}
+                >
+                  В канал
+                </Button>
               </CardFooter>
             </Card>
           );
