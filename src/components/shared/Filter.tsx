@@ -18,25 +18,22 @@ type FilterProps = {
   className?: string;
 };
 function Filter({ categories, className }: FilterProps) {
-  const { category, setCategory } = useFilter();
+  const { setCategory } = useFilter();
   return (
-    <>
-      <div className="text-sm text-muted-foreground">{category}</div>
-      <Select onValueChange={(value) => setCategory(value)}>
-        <SelectTrigger className={className}>
-          <SelectValue placeholder="Выберите категорию" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">Все</SelectItem>
-          {categories.map((category) => (
-            <SelectItem value={category.name} key={category.id}>
-              {category.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </>
-  );
+    <Select onValueChange={(value) => setCategory(value)}>
+      <SelectTrigger className={className}>
+        <SelectValue placeholder="Выберите категорию" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="all">Все</SelectItem>
+        {categories.map((category) => (
+          <SelectItem value={category.name} key={category.id}>
+            {category.name}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  ); 
 }
 
 export default Filter;
