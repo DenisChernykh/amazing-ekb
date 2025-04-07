@@ -1,5 +1,6 @@
 'use client';
 
+import { useFilter } from '@/hooks/useFilter';
 import {
   Select,
   SelectContent,
@@ -15,23 +16,26 @@ type Category = {
 type FilterProps = {
   categories: Category[];
   className?: string;
-  onFilterChange: (category: string) => void;
 };
-function Filter({ categories, className, onFilterChange }: FilterProps) {
+function Filter({ categories, className }: FilterProps) {
+  const { category, setCategory } = useFilter();
   return (
-    <Select onValueChange={(value) => onFilterChange(value)}>
-      <SelectTrigger className={className}>
-        <SelectValue placeholder="Выберите категорию" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="all">Все</SelectItem>
-        {categories.map((category) => (
-          <SelectItem value={category.name} key={category.id}>
-            {category.name}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <>
+      <div className="text-sm text-muted-foreground">{category}</div>
+      <Select onValueChange={(value) => setCategory(value)}>
+        <SelectTrigger className={className}>
+          <SelectValue placeholder="Выберите категорию" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">Все</SelectItem>
+          {categories.map((category) => (
+            <SelectItem value={category.name} key={category.id}>
+              {category.name}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </>
   );
 }
 

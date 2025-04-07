@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import GalleryModal from './GalleryModal';
 
+
 export type GalleryProps = {
   images: Image[];
 };

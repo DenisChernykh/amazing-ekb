@@ -1,4 +1,4 @@
-import Gallery from '@/components/Gallery';
+import Gallery from '@/components/features/Gallery/Gallery';
 import { getImagesById } from '@/lib/actions/post.actions';
 import 'swiper/css';
 
