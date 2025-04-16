@@ -35,6 +35,7 @@ type PostsListProps = {
 
 function PostsList({ initialPosts }: PostsListProps) {
   const { category } = useFilter();
+  console.log(initialPosts);
   const filteredPosts =
     category === "all"
       ? initialPosts
