@@ -8,16 +8,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
+import { useCategories } from '@/hooks/useCategories';
 
 type Category = {
   id: string;
   name: string;
 };
 type FilterProps = {
-  categories: Category[];
   className?: string;
 };
-function Filter({ categories, className }: FilterProps) {
+function Filter({ className }: FilterProps) {
+  const { categories } = useCategories();
   const { setCategory } = useFilter();
   return (
     <Select onValueChange={(value) => setCategory(value)}>
@@ -26,14 +27,14 @@ function Filter({ categories, className }: FilterProps) {
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="all">Все</SelectItem>
-        {categories.map((category) => (
+        {categories?.map((category: Category) => (
           <SelectItem value={category.name} key={category.id}>
             {category.name}
           </SelectItem>
         ))}
       </SelectContent>
     </Select>
-  ); 
+  );
 }
 
 export default Filter;

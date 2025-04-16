@@ -14,16 +14,38 @@ datasource db {
 }
 
 model Post {
-  id          String   @id @default(uuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  title       String
-  description String
-
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  title      String
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
   images     Image[]
-  postUrl    String
+  tgPostUrl  String
+  price      Int
+  mapUrl     String
+}
+
+model TelegramPost {
+  id       String   @id
+  text     String
+  date     DateTime
+  postLink String
+  images   Image[]
+}
+
+model Image {
+  id             String        @id @default(uuid())
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  filename       String?
+  TelegramPost   TelegramPost? @relation(fields: [telegramPostId], references: [id], onDelete: Cascade)
+  telegramPostId String?
+  imageUrl       String?
+  altText        String?
+  mainImage      Boolean?
+  post           Post?         @relation(fields: [postId], references: [id])
+  postId         String?
 }
 
 model Category {
@@ -32,15 +54,4 @@ model Category {
   updatedAt DateTime @updatedAt
   posts     Post[]
   name      String   @unique
-}
-
-model Image {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  url       String
-  altText   String
-  mainPhoto Boolean?
-  post      Post?    @relation(fields: [postId], references: [id])
-  postId    String?
 }
