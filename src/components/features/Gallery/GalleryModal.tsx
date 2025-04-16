@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useRef } from "react";
-import { GalleryProps } from "./Gallery";
+import { GalleryProps } from "./GalleryChangeName";
 
 type GalleryModalProps = GalleryProps & {
   onCloseModal: (value: boolean) => void;
