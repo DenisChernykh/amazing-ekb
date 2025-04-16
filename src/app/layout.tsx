@@ -8,6 +8,7 @@ import Header from "@/components/shared/Header";
 
 import CategoriesProvider from "@/providers/client/CategoriesProvider";
 import { getCategories } from "@/repositories";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,12 @@ export default async function RootLayout({
   const categories = (await getCategories()) || [];
   return (
     <html lang="ru" suppressHydrationWarning>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
