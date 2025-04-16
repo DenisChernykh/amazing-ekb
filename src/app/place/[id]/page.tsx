@@ -1,3 +1,4 @@
+
 import Gallery from "@/components/features/gallery/Gallery";
 import { getImagesById } from "@/repositories";
 
