@@ -9,6 +9,7 @@ import Header from "@/components/shared/Header";
 import CategoriesProvider from "@/providers/client/CategoriesProvider";
 import { getCategories } from "@/repositories";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
