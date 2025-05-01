@@ -9,12 +9,11 @@ import {
 } from "../../ui/card";
 
 import Image from "next/image";
-
 import { Button } from "../../ui/button";
 import { Badge } from "../../ui/badge";
 import { useFilter } from "@/hooks/useFilter";
 import { Post } from "@/utils/types";
-import { Link, Wallet } from "lucide-react";
+import { Link as LinkIcon, Wallet } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 type PostsListProps = {
@@ -35,16 +34,15 @@ function PostsList({ initialPosts }: PostsListProps) {
   return (
     <>
       {/* <Button className="mb-4">
-        <Link href={"/add-place"}>Добавить пост</Link>
+        <Link href="/add-place">Добавить пост</Link>
       </Button> */}
       <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:space-y-0">
         {filteredPosts.map((post) => {
           const isMainPhoto = post.images.find((image) => image.mainImage);
           const postLink = post.tgPostUrl || "";
           return (
-            <Card key={post.id} className="gap-2 py-0">
-
-              <CardContent className="relative flex  rounded-2xl p-0">
+            <Card key={post.id} className="gap-4 py-0">
+              <CardContent className="relative flex rounded-2xl p-0">
                 <AspectRatio ratio={1 / 1}>
                   {isMainPhoto && (
                     <Image
@@ -56,12 +54,10 @@ function PostsList({ initialPosts }: PostsListProps) {
                   )}
                 </AspectRatio>
               </CardContent>
-
-              <CardHeader className="gap-0 px-2">
+              <CardHeader className="grow gap-0 px-2">
                 <CardTitle>{post.title}</CardTitle>
               </CardHeader>
-
-              <CardContent className="space-y-3 px-2 md:px-2">
+              <CardContent className="flex flex-col justify-between gap-2 px-2 md:px-2">
                 {post.category && (
                   <Badge variant="secondary">{post.category.name}</Badge>
                 )}
@@ -81,14 +77,14 @@ function PostsList({ initialPosts }: PostsListProps) {
                     className="flex grow-1 justify-center"
                     onClick={() => handleMapClick(post.mapUrl)}
                   >
-                    <Link className="h-4 w-4" />
+                    <LinkIcon className="h-4 w-4" />
                   </Button>
                 </div>
               </CardContent>
-              <CardFooter className="mt-auto flex flex-col justify-between gap-2 px-0">
+              <CardFooter className="flex flex-col justify-between gap-2 px-0">
                 {/* <Link href={`/place/${post.id}`}>
-                  <Button>Галерея</Button>
-                </Link> */}
+										<Button>Галерея</Button>
+									</Link> */}
                 <Button
                   className="block w-full"
                   onClick={async () => {
