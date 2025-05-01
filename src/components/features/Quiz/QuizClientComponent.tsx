@@ -46,6 +46,7 @@ function QuizClientComponent() {
       <Button disabled={!userAnswerForCurrentQuestion} onClick={handleNext}>
         {isLastQuestion ? "Показать результат" : "Следующий вопрос"}
       </Button>
+      <div>Hello world</div>
     </>
   );
 }
