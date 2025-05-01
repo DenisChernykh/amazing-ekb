@@ -43,7 +43,8 @@ function PostsList({ initialPosts }: PostsListProps) {
           const postLink = post.tgPostUrl || "";
           return (
             <Card key={post.id} className="gap-2 py-0">
-              <CardContent className="relative flex rounded-2xl p-0">
+
+              <CardContent className="relative flex  rounded-2xl p-0">
                 <AspectRatio ratio={1 / 1}>
                   {isMainPhoto && (
                     <Image

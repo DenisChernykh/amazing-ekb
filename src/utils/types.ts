@@ -23,9 +23,44 @@ export type ImageType = {
 
 
 export type TelegramPost = {
-	id: string;
-	text: string;
-	date: Date;
-	postLink: string;
-	images: ImageType[];
+	id: string
+	text: string
+	date: Date
+	postLink: string
+	images: ImageType[]
 };
+
+export type Answer = {
+	questionId: number
+	selected: string
+};
+
+export type Question = {
+	id: number
+	question: string
+	options: string[]
+	correctAnswer: string
+}
+export type Result = {
+	id: number
+	question: string
+	selected: string | undefined
+	isCorrect: boolean
+	correctAnswer: string
+}
+export type QuizReturn = {
+	currentQuestion: Question
+	handleAnswer: (selected: string) => void
+	userAnswers: Answer[]
+	handleNext: () => void
+	userAnswerForCurrentQuestion?: Answer
+	isLastQuestion: boolean
+	showResults: boolean
+	progress: number
+	calculateCorrectAnswers: () => number
+	totalQuestions: number
+	questionNumber: number
+	getResults: () => Result[]
+	handleRepeatQuiz: () => void
+
+}

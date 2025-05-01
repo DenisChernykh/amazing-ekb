@@ -9,6 +9,7 @@ import Header from "@/components/shared/Header";
 import CategoriesProvider from "@/providers/client/CategoriesProvider";
 import { getCategories, getPosts } from "@/repositories";
 import PostsProvider from "@/providers/client/PostsProvider";
+import BottomNavigation from "@/components/shared/BottomNavigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,13 +37,14 @@ export default async function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} pb-content flex min-h-screen flex-col antialiased`}
       >
         <AppProviders>
           <CategoriesProvider categories={categories}>
             <PostsProvider posts={posts}>
               <Header />
               {children}
+              <BottomNavigation />
             </PostsProvider>
           </CategoriesProvider>
         </AppProviders>

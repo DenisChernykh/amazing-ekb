@@ -74,6 +74,8 @@
   --sidebar-ring: oklch(0.705 0.015 286.067);
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
+  --nav-height: 3rem;
+  --content-padding-bottom: calc(var(--nav-height) + 1rem);
 }
 
 .dark {
@@ -116,5 +118,13 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+@layer utilities {
+  .min-h-nav {
+    height: var(--nav-height);
+  }
+  .pb-content {
+    padding-bottom: var(--content-padding-bottom);
   }
 }

@@ -83,7 +83,7 @@ function AutocompleteInput({ label, ...props }: AutocompleteInputProps) {
           onChange={(e) => {
             props.onChange(e.target.value);
             setIsOpen(true);
-            setActiveIndex(-1); // сброс при новом вводе
+            setActiveIndex(-1);
           }}
         />
       </FormControl>

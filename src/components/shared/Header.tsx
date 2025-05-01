@@ -24,15 +24,15 @@ function Header() {
               <div className="flex items-center">
                 <ChevronLeft
                   style={{
-                    width: 32,
-                    height: 32,
+                    width: 24,
+                    height: 24,
                     display: "block",
                     marginLeft: "-8px",
                   }}
                   strokeWidth={2}
                   className="text-primary"
                 />
-                <span className="text-2xl">Назад</span>
+                <span className="text-xl">Назад</span>
               </div>
             </Button>
           </>
