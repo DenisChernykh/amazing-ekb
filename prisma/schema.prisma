@@ -27,6 +27,23 @@ model Post {
   publishedAt DateTime?
 }
 
+model Profile {
+  id         String   @id @default(cuid())
+  telegramId String   @unique
+  firstName  String
+  lastName   String?
+  username   String?
+  avatar     String?
+  role       Role     @default(USER)
+  createdAt  DateTime @default(now())
+  updatetAd  DateTime @updatedAt
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
 model TelegramPost {
   id       String   @id
   text     String

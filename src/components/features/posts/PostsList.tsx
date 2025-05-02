@@ -15,6 +15,7 @@ import { useFilter } from "@/hooks/useFilter";
 import { Post } from "@/utils/types";
 import { Link as LinkIcon, Wallet } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import AdminButton from "./AdminButton";
 
 type PostsListProps = {
   initialPosts: Post[];
@@ -23,6 +24,7 @@ type PostsListProps = {
 
 function PostsList({ initialPosts }: PostsListProps) {
   const { category } = useFilter();
+
   const filteredPosts =
     category === "all"
       ? initialPosts
@@ -33,9 +35,8 @@ function PostsList({ initialPosts }: PostsListProps) {
   };
   return (
     <>
-      {/* <Button className="mb-4">
-        <Link href="/add-place">Добавить пост</Link>
-      </Button> */}
+      <AdminButton />
+
       <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:space-y-0">
         {filteredPosts.map((post) => {
           const isMainPhoto = post.images.find((image) => image.mainImage);

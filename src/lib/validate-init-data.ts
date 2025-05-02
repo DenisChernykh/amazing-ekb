@@ -1,21 +1,29 @@
-import crypto from 'crypto'
+import crypto from "crypto"
 
-export function validateInitData(initData: string, botToken: string) {
-	const params = new URLSearchParams(initData)
-	const hash = params.get('hash')
-	params.delete('hash')
+export const validateInitData = (initData: string, botToken: string) => {
+	const urlSearchParams = new URLSearchParams(initData);
+	const data = Object.fromEntries(urlSearchParams.entries());
 
-	const dataCheckString = [...params.entries()].map(([key, val]) => `${key}=${val}`).sort().join('\n')
-	const secret = crypto.createHash('sha256').update(botToken).digest()
-	const hmac = crypto.createHmac('sha256', secret).update(dataCheckString).digest('hex')
-	if (hmac !== hash) return null
+	const checkString = Object.keys(data)
+		.filter(key => key !== 'hash')
+		.map(key => `${key}=${data[key]}`)
+		.sort()
+		.join('\n');
 
-	const userJson = params.get('user')
-	if (!userJson) return null
+	const secretKey = crypto.createHmac('sha256', botToken)
+		.update('WebAppData')
+		.digest();
+
+	const signature = crypto.createHmac('sha256', secretKey)
+		.update(checkString)
+		.digest('hex');
+
+
 	try {
-		const user = JSON.parse(userJson)
-		return { user }
-	} catch {
-		return null
+		const user = JSON.parse(decodeURIComponent(data.user));
+		return { user, signature };
+	} catch (e) {
+		console.error('Failed to parse user param', e);
+		return null;
 	}
 }
