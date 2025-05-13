@@ -44,6 +44,8 @@ function PostsList({ initialPosts }: PostsListProps) {
           const isMainPhoto = post.telegramPost.images.find(
             (image) => image.mainImage,
           );
+          console.log("isMainPhoto", isMainPhoto);
+
           console.log(
             getImageUrl(isMainPhoto?.path || "/placeholder-image.jpg"),
           );

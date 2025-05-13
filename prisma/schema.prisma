@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("SUPABASE_DB_URL")
 }
 
 model Post {
@@ -62,7 +62,7 @@ model Image {
   telegramPostId String?
   path           String        @unique
   altText        String?
-  mainImage      Boolean?
+  mainImage      Boolean      @default(false)
 }
 
 model Category {
