@@ -3,7 +3,6 @@
 import { ConflictError, Errors, ValidationError } from "@/lib/errors";
 import { serverFormSchema } from "@/schemas";
 import prisma from "@/utils/db";
-import { ImageType } from "@/utils/types";
 import { revalidatePath } from "next/cache";
 
 
