@@ -16,6 +16,7 @@ import { Post } from "@/utils/types";
 import { Link as LinkIcon, Wallet } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import AdminButton from "./AdminButton";
+import { getImageUrl } from "@/utils/get-supabase-storage";
 
 type PostsListProps = {
   initialPosts: Post[];
@@ -52,7 +53,11 @@ function PostsList({ initialPosts }: PostsListProps) {
                     <Image
                       className="rounded-xl object-cover"
                       fill
-                      src={isMainPhoto.path || "/placeholder-image.jpg"}
+                      src={
+                        getImageUrl(
+                          isMainPhoto.path || "/placeholder-image.jpg",
+                        ) || "/placeholder-image.jpg"
+                      }
                       alt={isMainPhoto.altText || "Фото поста"}
                     />
                   )}
