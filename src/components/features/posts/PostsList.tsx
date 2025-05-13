@@ -25,7 +25,6 @@ type PostsListProps = {
 
 function PostsList({ initialPosts }: PostsListProps) {
   const { category } = useFilter();
-  console.log("Посты", initialPosts);
 
   const filteredPosts =
     category === "all"
@@ -45,6 +44,7 @@ function PostsList({ initialPosts }: PostsListProps) {
             (image) => image.mainImage,
           );
           console.log("isMainPhoto", isMainPhoto);
+          console.log("images", post.telegramPost.images);
 
           console.log(
             getImageUrl(isMainPhoto?.path || "/placeholder-image.jpg"),
