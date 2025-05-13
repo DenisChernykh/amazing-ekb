@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("SUPABASE_DB_URL")
 }
 
 model Post {
@@ -50,16 +50,16 @@ model TelegramPost {
   date     DateTime
   postLink String
   images   Image[]
+  isHidden Boolean  @default(false)
 }
 
 model Image {
   id             String        @id @default(uuid())
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
-  filename       String?
   TelegramPost   TelegramPost? @relation(fields: [telegramPostId], references: [id], onDelete: Cascade)
   telegramPostId String?
-  imageUrl       String?
+  path           String        @unique
   altText        String?
   mainImage      Boolean?
   post           Post?         @relation(fields: [postId], references: [id])

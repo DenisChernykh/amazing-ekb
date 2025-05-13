@@ -7,9 +7,9 @@ export async function getPosts() {
 				images: {
 					select: {
 						id: true,
-						imageUrl: true,
 						altText: true,
 						mainImage: true,
+						path: true
 					}
 				},
 				category: {

@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
 
 export default function AdminButton() {
-  const { isAdmin, loading } = useIsAdmin();
+  const { isAdmin, loading, user } = useIsAdmin();
+  console.log(user);
 
   if (loading || !isAdmin) return null;
 

@@ -15,7 +15,7 @@ export type Post = {
 }
 export type ImageType = {
 	id: string;
-	imageUrl: string | null;
+	path: string | null;
 	altText: string | null;
 	mainImage: boolean | null;
 };

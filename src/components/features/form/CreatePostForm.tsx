@@ -31,6 +31,7 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
       publishedAt: "",
     },
   });
+  const allImages = telegramPosts.flatMap((post) => post.images);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -48,6 +49,7 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
           formData.append("images", values.images);
         }
       }
+
       formData.append("tgImages", JSON.stringify(values.tgImages));
       await createPost(formData);
       form.reset();
@@ -105,7 +107,9 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
         <FormField
           control={form.control}
           name="tgImages"
-          render={({ field }) => <TgImagesInput {...field} />}
+          render={({ field }) => (
+            <TgImagesInput {...field} allImages={allImages} />
+          )}
         />
         <FormField
           control={form.control}

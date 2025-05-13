@@ -10,7 +10,7 @@ export async function getImagesById(id: string) {
 			select: {
 				id: true,
 				mainImage: true,
-				imageUrl: true,
+				path: true,
 				altText: true
 			}
 		})

@@ -38,7 +38,7 @@ function Gallery({ images }: GalleryProps) {
         >
           <Image
             onClick={() => handleImageClick(image)}
-            src={image.imageUrl || "/placeholder-image.jpg"}
+            src={image.path || "/placeholder-image.jpg"}
             alt={image.altText || "Image description not available"}
             fill
             className="object-cover transition-transform duration-300 hover:scale-105"

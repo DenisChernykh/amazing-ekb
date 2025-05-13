@@ -3,14 +3,16 @@ import { useEffect, useState } from "react";
 export function useIsAdmin() {
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const [user, setisUser] = useState(null);
 	useEffect(() => {
 		const checkUser = async () => {
 			try {
-				console.log('checkUser');
 
-				const res = await fetch('/api/auth/me');
+				const res = await fetch('/api/auth/me', {
+					credentials: 'include'
+				});
 				const data = await res.json();
-
+				setisUser(data.user);
 				setIsAdmin(data.user?.role === 'ADMIN');
 			} catch (e) {
 				console.error('Ошибка при проверке роли', e);
@@ -20,5 +22,5 @@ export function useIsAdmin() {
 		};
 		checkUser();
 	}, []);
-	return { isAdmin, loading };
+	return { isAdmin, loading, user };
 }

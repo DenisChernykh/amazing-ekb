@@ -37,7 +37,7 @@ function GalleryModal({
             <SwiperSlide key={image.id}>
               <div className="relative flex h-screen items-center justify-center">
                 <Image
-                  src={image.imageUrl || "/placeholder-image.jpg"}
+                  src={image.path || "/placeholder-image.jpg"}
                   alt={image.altText || "alt-text"}
                   fill
                   className="z-10 object-contain transition-transform duration-300 hover:scale-105"

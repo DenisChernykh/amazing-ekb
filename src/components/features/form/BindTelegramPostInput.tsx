@@ -33,7 +33,7 @@ function BindTelegramPostInput({
   const filteredTelegramPosts = telegramPosts.filter(
     (tgPost) => !existingTgPostUrl.includes(tgPost.postLink),
   );
-  
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const tgPostRef = useOutsideClick(() => setIsOpen(false), true);
   return (
@@ -99,9 +99,7 @@ function BindTelegramPostInput({
                     props.onChange(tgPost.postLink);
                     setValue(
                       "tgImages",
-                      tgPost.images
-                        .map((img) => img.imageUrl)
-                        .filter((url): url is string => url !== null),
+                      tgPost.images.map((img) => img.id),
                     );
                     setValue("publishedAt", tgPost.date.toISOString());
                     setIsOpen(false);

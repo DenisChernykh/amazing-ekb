@@ -1,7 +1,13 @@
-import { createClient } from "@supabase/supabase-js";
+import 'dotenv/config'; // Добавьте эту строку в самом начале файла
+import { createClient } from '@supabase/supabase-js'
 
-const url = process.env.SUPABASE_URL as string;
-const key = process.env.SUPABASE_KEY as string;
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
-export const supabase = createClient(url, key);
+if (!supabaseUrl || !supabaseAnonKey) {
+	throw new Error('Supabase URL and anon key are required');
+}
 
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+export default supabase;

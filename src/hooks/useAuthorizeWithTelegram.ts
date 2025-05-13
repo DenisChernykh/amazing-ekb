@@ -9,7 +9,7 @@ export function useAuthorizeWithTelegram() {
 
 			const { default: WebApp } = await import("@twa-dev/sdk")
 			const initData = WebApp.initData
-			console.log(initData)
+
 
 
 			if (!initData) return

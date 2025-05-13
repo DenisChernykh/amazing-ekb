@@ -1,4 +1,4 @@
-import {  z } from "zod";
+import { z } from "zod";
 
 export const formSchema = z.object({
 	title: z.string().min(1, {
@@ -16,6 +16,7 @@ export const formSchema = z.object({
 	telegramPost: z.string().min(1, {
 		message: 'Выберите ссылку на пост'
 	}),
+
 	tgImages: z.array(z.string()),
 	publishedAt: z.string().datetime()
 });

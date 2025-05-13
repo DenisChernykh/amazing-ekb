@@ -49,7 +49,7 @@ function PostsList({ initialPosts }: PostsListProps) {
                     <Image
                       className="rounded-xl object-cover"
                       fill
-                      src={isMainPhoto.imageUrl || "/placeholder-image.jpg"}
+                      src={isMainPhoto.path || "/placeholder-image.jpg"}
                       alt={isMainPhoto.altText || "Фото поста"}
                     />
                   )}

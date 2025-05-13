@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase";
+import supabase from "@/utils/supabase";
 import fs from "fs";
 import path from "path";
 
