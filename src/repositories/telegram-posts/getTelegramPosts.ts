@@ -3,6 +3,9 @@ import prisma from "@/utils/db";
 export async function getTelegramPosts() {
 	try {
 		const telegramPosts = await prisma.telegramPost.findMany({
+			where: {
+				isHidden: false
+			},
 			select:
 			{
 				id: true,
@@ -13,7 +16,7 @@ export async function getTelegramPosts() {
 				{
 					select: {
 						id: true,
-						imageUrl: true,
+						path: true,
 						altText: true,
 						mainImage: true
 					}

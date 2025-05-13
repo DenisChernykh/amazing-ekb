@@ -14,7 +14,7 @@ export const createPost = async (formData: FormData) => {
 		const price = formData.get("price");
 		const mapUrl = formData.get("mapUrl");
 		const categoryName = formData.get("category");
-		const telegramPost = formData.get("telegramPost"); 
+		const telegramPost = formData.get("telegramPost");
 		const images = formData.getAll("images");
 		const tgImagesRaw = formData.get("tgImages");
 		const publishedAt = formData.get("publishedAt");
@@ -23,7 +23,7 @@ export const createPost = async (formData: FormData) => {
 		if (typeof tgImagesRaw !== 'string') {
 			throw Errors.Validation('tgImages должен быть строкой')
 		}
-		const tgImages = JSON.parse(tgImagesRaw) as ImageType[]
+		const tgImages = JSON.parse(tgImagesRaw) as string[]
 		const data = {
 			title,
 			price,
@@ -64,18 +64,19 @@ export const createPost = async (formData: FormData) => {
 				publishedAt: validatedData.publishedAt,
 			}
 		})
+
 		if (tgImages && tgImages.length > 0) {
-			await prisma.image.createMany({
-				data: tgImages.map((url, index) => ({
-					imageUrl: String(url),
-					altText: validatedData.title,
-					mainImage: index === 0,
-					postId: newPost.id
-				}))
-			})
+			await Promise.all(tgImages.map((image, index) =>
+				prisma.image.update({
+					where: { id: image },
+					data: {
+						altText: validatedData.title,
+						mainImage: index === 0,
+						postId: newPost.id
+					}
+				})
+			))
 		}
-
-
 		revalidatePath('/')
 	} catch (error) {
 		console.error('Ошибка создания поста:', error);
