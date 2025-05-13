@@ -44,6 +44,10 @@ function PostsList({ initialPosts }: PostsListProps) {
           const isMainPhoto = post.telegramPost.images.find(
             (image) => image.mainImage,
           );
+          console.log(
+            getImageUrl(isMainPhoto?.path || "/placeholder-image.jpg"),
+          );
+
           const postLink = post.telegramPost.postLink || "";
           return (
             <Card key={post.id} className="gap-4 py-0">
