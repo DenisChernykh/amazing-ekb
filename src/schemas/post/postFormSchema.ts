@@ -16,9 +16,6 @@ export const formSchema = z.object({
 	telegramPost: z.string().min(1, {
 		message: 'Выберите ссылку на пост'
 	}),
-
-	tgImages: z.array(z.string()),
-	publishedAt: z.string().datetime()
 });
 
 function validateFile() {
@@ -50,6 +47,4 @@ export const serverFormSchema = z.object({
 	telegramPost: z.string().min(1, {
 		message: 'Выберите ссылку на пост'
 	}),
-	tgImages: z.array(z.string()),
-	publishedAt: z.string().datetime()
 })

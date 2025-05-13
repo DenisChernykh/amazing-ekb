@@ -12,7 +12,6 @@ import ImageInput from "./ImageInput";
 import AutocompleteInput from "./AutocompleteInput";
 import BindTelegramPostInput from "./BindTelegramPostInput";
 import { TelegramPost } from "@/utils/types";
-import TgImagesInput from "./TgImagesInput";
 
 type CreatePostFormProps = {
   telegramPosts: TelegramPost[];
@@ -27,11 +26,8 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
       images: undefined,
       category: "",
       telegramPost: "",
-      tgImages: [],
-      publishedAt: "",
     },
   });
-  const allImages = telegramPosts.flatMap((post) => post.images);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -41,7 +37,6 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
       formData.append("mapUrl", values.mapUrl);
       formData.append("category", values.category);
       formData.append("telegramPost", values.telegramPost);
-      formData.append("publishedAt", values.publishedAt);
       if (values.images) {
         if (Array.isArray(values.images)) {
           values.images.forEach((file) => formData.append("images", file));
@@ -50,7 +45,6 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
         }
       }
 
-      formData.append("tgImages", JSON.stringify(values.tgImages));
       await createPost(formData);
       form.reset();
     } catch (error) {
@@ -99,22 +93,9 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
             <BindTelegramPostInput
               telegramPosts={telegramPosts}
               label="Связать с постом"
-              setValue={form.setValue}
               {...field}
             />
           )}
-        />
-        <FormField
-          control={form.control}
-          name="tgImages"
-          render={({ field }) => (
-            <TgImagesInput {...field} allImages={allImages} />
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="publishedAt"
-          render={({ field }) => <input {...field} type="hidden" />}
         />
 
         <Button disabled={form.formState.isSubmitting} type="submit">

@@ -11,25 +11,23 @@ import { usePosts } from "@/hooks/usePosts";
 import { formSchema } from "@/schemas";
 import { TelegramPost } from "@/utils/types";
 import { useState } from "react";
-import { UseControllerReturn, UseFormSetValue } from "react-hook-form";
+import { UseControllerReturn } from "react-hook-form";
 import { z } from "zod";
 type AutocompleteInputProps = React.ComponentProps<"input"> & {
   label: string;
   telegramPosts: TelegramPost[];
-  setValue: UseFormSetValue<FormData>;
 } & UseControllerReturn<FormData>["field"];
 
 type FormData = z.infer<typeof formSchema>;
 function BindTelegramPostInput({
   label,
   telegramPosts,
-  setValue,
   ...props
 }: AutocompleteInputProps) {
   const [activeIndex, setActiveIndex] = useState<number>(-1);
+  const [inputValue, setInputValue] = useState<string>("");
   const { posts } = usePosts();
-
-  const existingTgPostUrl = posts.map((post) => post.tgPostUrl);
+  const existingTgPostUrl = posts.map((post) => post.telegramPost.postLink);
   const filteredTelegramPosts = telegramPosts.filter(
     (tgPost) => !existingTgPostUrl.includes(tgPost.postLink),
   );
@@ -41,7 +39,7 @@ function BindTelegramPostInput({
       <FormLabel>{label}</FormLabel>
       <FormControl>
         <Input
-          value={props.value}
+          value={inputValue}
           onFocus={() => {
             setIsOpen(true);
             setActiveIndex(-1); // сбросить активный индекс
@@ -79,7 +77,7 @@ function BindTelegramPostInput({
           onChange={(e) => {
             props.onChange(e.target.value);
             setIsOpen(true);
-            setActiveIndex(-1); // сброс при новом вводе
+            setActiveIndex(-1);
           }}
         />
       </FormControl>
@@ -96,12 +94,8 @@ function BindTelegramPostInput({
                   }`}
                   key={tgPost.id}
                   onClick={() => {
-                    props.onChange(tgPost.postLink);
-                    setValue(
-                      "tgImages",
-                      tgPost.images.map((img) => img.id),
-                    );
-                    setValue("publishedAt", tgPost.date.toISOString());
+                    props.onChange(tgPost.id);
+                    setInputValue(tgPost.postLink);
                     setIsOpen(false);
                   }}
                 >

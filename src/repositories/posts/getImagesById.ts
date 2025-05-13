@@ -5,7 +5,7 @@ export async function getImagesById(id: string) {
 	try {
 		const images = await prisma.image.findMany({
 			where: {
-				postId: id
+				telegramPostId: id
 			},
 			select: {
 				id: true,
