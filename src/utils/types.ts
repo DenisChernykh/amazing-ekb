@@ -4,14 +4,11 @@ export type Category = {
 };
 export type Post = {
 	id: string;
-	createdAt: Date;
 	title: string;
-	tgPostUrl: string;
 	category: Category;
-	images: ImageType[];
+	telegramPost: TelegramPost;
 	price: string;
 	mapUrl: string;
-
 }
 export type ImageType = {
 	id: string;
@@ -23,11 +20,11 @@ export type ImageType = {
 
 
 export type TelegramPost = {
-	id: string
-	text: string
+	id: string;
 	date: Date
 	postLink: string
 	images: ImageType[]
+	text: string
 };
 
 export type Answer = {

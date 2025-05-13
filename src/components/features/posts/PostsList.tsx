@@ -24,6 +24,7 @@ type PostsListProps = {
 
 function PostsList({ initialPosts }: PostsListProps) {
   const { category } = useFilter();
+  console.log("Посты", initialPosts);
 
   const filteredPosts =
     category === "all"
@@ -39,8 +40,10 @@ function PostsList({ initialPosts }: PostsListProps) {
 
       <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:space-y-0">
         {filteredPosts.map((post) => {
-          const isMainPhoto = post.images.find((image) => image.mainImage);
-          const postLink = post.tgPostUrl || "";
+          const isMainPhoto = post.telegramPost.images.find(
+            (image) => image.mainImage,
+          );
+          const postLink = post.telegramPost.postLink || "";
           return (
             <Card key={post.id} className="gap-4 py-0">
               <CardContent className="relative flex rounded-2xl p-0">

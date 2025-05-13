@@ -3,14 +3,27 @@ import prisma from "@/utils/db";
 export async function getPosts() {
 	try {
 		const posts = await prisma.post.findMany({
-			include: {
-				images: {
+			select: {
+				id: true,
+				title: true,
+				price: true,
+				mapUrl: true,
+				telegramPost: {
 					select: {
+						postLink: true,
 						id: true,
-						altText: true,
-						mainImage: true,
-						path: true
+						text: true,
+						date: true,
+						images: {
+							select: {
+								path: true,
+								altText: true,
+								mainImage: true,
+								id: true
+							}
+						}
 					}
+
 				},
 				category: {
 					select: {
@@ -20,7 +33,9 @@ export async function getPosts() {
 				}
 			},
 			orderBy: {
-				publishedAt: "desc"
+				telegramPost: {
+					date: "desc"
+				}
 			}
 		});
 

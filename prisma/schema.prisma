@@ -14,17 +14,16 @@ datasource db {
 }
 
 model Post {
-  id          String    @id @default(uuid())
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  title       String
-  category    Category  @relation(fields: [categoryId], references: [id])
-  categoryId  String
-  images      Image[]
-  tgPostUrl   String
-  price       String
-  mapUrl      String
-  publishedAt DateTime?
+  id             String       @id @default(uuid())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  title          String
+  category       Category     @relation(fields: [categoryId], references: [id])
+  categoryId     String
+  price          String
+  mapUrl         String
+  telegramPost   TelegramPost @relation(fields: [telegramPostId], references: [id])
+  telegramPostId String       @unique
 }
 
 model Profile {
@@ -51,6 +50,8 @@ model TelegramPost {
   postLink String
   images   Image[]
   isHidden Boolean  @default(false)
+  post     Post?
+  postId   String?
 }
 
 model Image {
@@ -62,8 +63,6 @@ model Image {
   path           String        @unique
   altText        String?
   mainImage      Boolean?
-  post           Post?         @relation(fields: [postId], references: [id])
-  postId         String?
 }
 
 model Category {
