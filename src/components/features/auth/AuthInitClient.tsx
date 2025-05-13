@@ -3,6 +3,7 @@ import { useAuthorizeWithTelegram } from "@/hooks/useAuthorizeWithTelegram";
 
 
 const AuthInitClient = () => {
+
   useAuthorizeWithTelegram();
   return null;
 };

@@ -7,12 +7,13 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import { UseControllerReturn } from "react-hook-form";
 import { z } from "zod";
+import { getImageUrl } from "@/utils/get-supabase-storage";
 type FormData = z.infer<typeof formSchema>;
 type TgImagesInputType = React.ComponentProps<"input"> &
   UseControllerReturn<FormData, "tgImages">["field"];
 type TgImagesInputProps = TgImagesInputType & { allImages: ImageType[] };
 function TgImagesInput({ allImages, ...props }: TgImagesInputProps) {
-  console.log(allImages);
+
   const displayImages = props.value.map((id) => {
     const img = allImages.find((img) => img.id === id);
     return { id, path: img?.path || "" };
@@ -29,6 +30,8 @@ function TgImagesInput({ allImages, ...props }: TgImagesInputProps) {
       </FormControl>
       <div className="mt-4 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5">
         {displayImages.map((image, index) => {
+          console.log(getImageUrl(image.path));
+
           return (
             <div
               key={index}
@@ -36,7 +39,7 @@ function TgImagesInput({ allImages, ...props }: TgImagesInputProps) {
             >
               <Image
                 fill
-                src={image.path || "/placeholder-image.jpg"}
+                src={getImageUrl(image.path) || "/placeholder-image.jpg"}
                 alt={`preview-${index}`}
                 className="h-full w-full object-cover transition-all group-hover:brightness-90"
               />
