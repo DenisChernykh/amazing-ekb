@@ -10,8 +10,8 @@ import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { usePosts } from "@/hooks/usePosts";
 import { formSchema } from "@/schemas";
 import { TelegramPost } from "@/utils/types";
-import { useState } from "react";
-import { UseControllerReturn } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { UseControllerReturn, useFormState } from "react-hook-form";
 import { z } from "zod";
 type AutocompleteInputProps = React.ComponentProps<"input"> & {
   label: string;
@@ -31,9 +31,15 @@ function BindTelegramPostInput({
   const filteredTelegramPosts = telegramPosts.filter(
     (tgPost) => !existingTgPostUrl.includes(tgPost.postLink),
   );
-
+  const { isSubmitSuccessful } = useFormState();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const tgPostRef = useOutsideClick(() => setIsOpen(false), true);
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      setInputValue("");
+    }
+  }, [isSubmitSuccessful]);
   return (
     <FormItem ref={tgPostRef} className="relative mb-5">
       <FormLabel>{label}</FormLabel>

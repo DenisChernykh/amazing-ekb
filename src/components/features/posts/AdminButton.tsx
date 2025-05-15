@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
 
 export default function AdminButton() {
-  const { isAdmin, loading, user } = useIsAdmin();
-  console.log(user);
+  const { isAdmin, loading } = useIsAdmin();
 
-  if (loading || !isAdmin) return null;
+  const isDevelopment = process.env.SKIP_AUTH === "true";
+  if ((loading || !isAdmin) && !isDevelopment) return null;
 
   return (
     <Button className="mb-4">

@@ -12,9 +12,9 @@ export type Post = {
 }
 export type ImageType = {
 	id: string;
-	path: string | null;
+	path: string;
 	altText: string | null;
-	mainImage: boolean | null;
+	mainImage: boolean
 };
 
 

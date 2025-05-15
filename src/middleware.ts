@@ -8,6 +8,11 @@ export async function middleware(req: NextRequest) {
 	const token = req.cookies.get('session')?.value;
 	const url = req.nextUrl.clone();
 
+	if (process.env.SKIP_AUTH === 'true') {
+		console.log('Middleware отключён через SKIP_AUTH');
+		return NextResponse.next();
+	}
+
 	if (!token) {
 		console.log('Нет токена');
 		return NextResponse.redirect(new URL('/', req.url));
@@ -17,7 +22,7 @@ export async function middleware(req: NextRequest) {
 		const { payload } = await jwtVerify(token, getKey());
 
 		if (url.pathname === '/add-place' && payload.role !== 'ADMIN') {
-			console.log('Доступ запрещен: роль не ADMIN');
+			console.log('Доступ запрещен');
 			return NextResponse.redirect(new URL('/quiz', req.url));
 		}
 

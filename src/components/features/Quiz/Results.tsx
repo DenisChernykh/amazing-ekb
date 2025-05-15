@@ -16,7 +16,6 @@ function Results({
   totalQuestions,
   handleRepeatQuiz,
 }: ResultsProps) {
-  console.log(getResults());
   const results = getResults();
   return (
     <>
