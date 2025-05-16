@@ -1,10 +1,10 @@
-// src/hooks/useAuthorizeWithTelegram.ts
+
 import { useEffect } from "react"
 
 export function useAuthorizeWithTelegram() {
 	useEffect(() => {
 		const init = async () => {
-			// Гарантированно на клиенте: импортируем SDK
+		
 			if (typeof window === 'undefined') return
 
 			const { default: WebApp } = await import("@twa-dev/sdk")

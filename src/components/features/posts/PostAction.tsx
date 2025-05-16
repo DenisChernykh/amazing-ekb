@@ -1,11 +1,11 @@
+"use client";
 import { Button } from "@/components/ui/button";
 
 type PostActionProps = {
-
   postLink: string;
 };
 
-const PostAction = ({  postLink }: PostActionProps) => {
+const PostAction = ({ postLink }: PostActionProps) => {
   return (
     <Button
       className="block w-full"

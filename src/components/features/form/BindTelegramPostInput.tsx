@@ -5,14 +5,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { usePosts } from "@/hooks/usePosts";
 import { formSchema } from "@/schemas";
 import { TelegramPost } from "@/utils/types";
-import { useEffect, useState } from "react";
-import { UseControllerReturn, useFormState } from "react-hook-form";
+
+import { UseControllerReturn } from "react-hook-form";
 import { z } from "zod";
+import AutocompleteDropdown from "./AutocompleteDropdown";
+import { useAutocomplete } from "@/hooks/useAutocomplete";
+
 type AutocompleteInputProps = React.ComponentProps<"input"> & {
   label: string;
   telegramPosts: TelegramPost[];
@@ -24,89 +26,47 @@ function BindTelegramPostInput({
   telegramPosts,
   ...props
 }: AutocompleteInputProps) {
-  const [activeIndex, setActiveIndex] = useState<number>(-1);
-  const [inputValue, setInputValue] = useState<string>("");
   const { posts } = usePosts();
-  const existingTgPostUrl = posts.map((post) => post.telegramPost.postLink);
-  const filteredTelegramPosts = telegramPosts.filter(
-    (tgPost) => !existingTgPostUrl.includes(tgPost.postLink),
+  const usedPosts = posts.map((post) => post.telegramPost.postLink);
+  const availablePosts = telegramPosts.filter(
+    (tgPost) => !usedPosts.includes(tgPost.postLink),
   );
-  const { isSubmitSuccessful } = useFormState();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const {
+    setIsOpen,
+    inputValue,
+    handleFocus,
+    handleKeyDown,
+    onInputChange,
+    isOpen,
+    selectPostFromDropdown,
+    activeIndex,
+  } = useAutocomplete({ availablePosts, onChange: props.onChange });
   const tgPostRef = useOutsideClick(() => setIsOpen(false), true);
 
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      setInputValue("");
-    }
-  }, [isSubmitSuccessful]);
   return (
     <FormItem ref={tgPostRef} className="relative mb-5">
       <FormLabel>{label}</FormLabel>
       <FormControl>
         <Input
           value={inputValue}
-          onFocus={() => {
-            setIsOpen(true);
-            setActiveIndex(-1); // сбросить активный индекс
-          }}
-          onKeyDown={(e) => {
-            if (!isOpen) return;
-
-            if (e.key === "ArrowDown") {
-              e.preventDefault();
-              setActiveIndex((prev) =>
-                prev < filteredTelegramPosts.length - 1 ? prev + 1 : 0,
-              );
-            }
-
-            if (e.key === "ArrowUp") {
-              e.preventDefault();
-              setActiveIndex((prev) =>
-                prev > 0 ? prev - 1 : filteredTelegramPosts.length - 1,
-              );
-            }
-
-            if (e.key === "Enter" && activeIndex !== -1) {
-              e.preventDefault();
-              const selected = filteredTelegramPosts[activeIndex];
-              if (selected) {
-                props.onChange({ target: { value: selected.text } });
-                setIsOpen(false);
-              }
-            }
-
-            if (e.key === "Escape") {
-              setIsOpen(false);
-            }
-          }}
-          onChange={(e) => {
-            props.onChange(e.target.value);
-            setIsOpen(true);
-            setActiveIndex(-1);
-          }}
+          onFocus={handleFocus}
+          onKeyDown={handleKeyDown}
+          onChange={onInputChange}
         />
       </FormControl>
       {isOpen && (
         <div className="absolute top-full z-10 mt-1 w-full rounded-md border border-gray-200 bg-white shadow-lg">
           <div className="max-h-60 overflow-auto p-1">
-            {filteredTelegramPosts.map((tgPost, index) => {
+            {availablePosts.map((tgPost, index) => {
               return (
-                <div
-                  className={`cursor-pointer px-4 py-2 transition-colors ${
-                    index === activeIndex
-                      ? "bg-gray-200 font-medium"
-                      : "hover:bg-gray-100"
-                  }`}
+                <AutocompleteDropdown
                   key={tgPost.id}
-                  onClick={() => {
-                    props.onChange(tgPost.id);
-                    setInputValue(tgPost.postLink);
-                    setIsOpen(false);
-                  }}
-                >
-                  {tgPost.text.slice(0, 50)}
-                </div>
+                  index={index}
+                  activeIndex={activeIndex}
+                  tgPost={tgPost}
+                  handleChange={selectPostFromDropdown}
+                />
               );
             })}
           </div>
