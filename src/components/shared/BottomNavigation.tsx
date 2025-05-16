@@ -9,7 +9,7 @@ function BottomNavigation() {
     pathname === path ? "var(--chart-5)" : "var(--primary";
 
   return (
-    <nav className="min-h-nav bg-accent fixed right-0 bottom-0 left-0 flex items-center justify-around">
+    <nav className="min-h-nav bg-accent fixed z-10 right-0 bottom-0 left-0 flex items-center justify-around">
       <Link href="/">
         <FileText color={getIconClass("/")} />
       </Link>

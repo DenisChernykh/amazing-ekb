@@ -6,23 +6,25 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import PostImage from "./PostImage";
 
 import PostMeta from "./PostMeta";
 import PostAction from "./PostAction";
 import { Post } from "@/utils/types";
 import { Badge } from "@/components/ui/badge";
+import PostImageGallery from "./PostImageGallery";
 
 type PostCardProps = {
   post: Post;
 };
 
 const PostCard = ({ post }: PostCardProps) => {
-  const mainImage = post.telegramPost.images.find((image) => image.mainImage);
   return (
     <Card className="gap-4 py-0">
       <CardContent className="relative flex rounded-2xl p-0">
-        <PostImage path={mainImage?.path} altText={post.title} />
+        <PostImageGallery
+          images={post.telegramPost.images}
+          altText={post.title}
+        />
       </CardContent>
       <CardHeader className="grow gap-0 px-2">
         <CardTitle>{post.title}</CardTitle>

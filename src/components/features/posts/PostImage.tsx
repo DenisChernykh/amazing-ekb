@@ -1,4 +1,4 @@
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+
 import { getImageUrl } from "@/utils/get-supabase-storage";
 
 import Image from "next/image";
@@ -14,7 +14,7 @@ const PostImage = ({ path, altText }: PostImageProps) => {
   const alt = altText ? altText : "Фото поста";
   const [isLoading, setIsLoading] = useState<boolean>(true);
   return (
-    <AspectRatio ratio={1 / 1}>
+    <>
       {isLoading && (
         <div className="bg-muted absolute inset-0 animate-pulse rounded-xl" />
       )}
@@ -27,7 +27,7 @@ const PostImage = ({ path, altText }: PostImageProps) => {
         aria-label="Фото поста"
         onLoadingComplete={() => setIsLoading(false)}
       />
-    </AspectRatio>
+    </>
   );
 };
 
