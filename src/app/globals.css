@@ -130,8 +130,7 @@
 }
 
 .custom-swiper .swiper-pagination-bullet {
-  width: 0.75rem;
-  height: 0.75rem;
+
   border: 2px solid #f97316;
   opacity: 1;
   background: transparent;
