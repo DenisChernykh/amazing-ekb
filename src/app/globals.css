@@ -128,10 +128,19 @@
     padding-bottom: var(--content-padding-bottom);
   }
 }
+.custom-swiper
+  .swiper-horizontal
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet,
+.custom-swiper
+  .swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  margin-left: 2px;
+  margin-right: 2px;
+}
 
 .custom-swiper .swiper-pagination-bullet {
-
-  border: 2px solid #f97316;
+  border: 1px solid #f97316;
   opacity: 1;
   background: transparent;
   border-radius: 9999px;
