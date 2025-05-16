@@ -128,3 +128,19 @@
     padding-bottom: var(--content-padding-bottom);
   }
 }
+
+.custom-swiper .swiper-pagination-bullet {
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid #f97316;
+  opacity: 1;
+  background: transparent;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.custom-swiper .swiper-pagination-bullet-active {
+  background: #f97316;
+  opacity: 1;
+  transform: scale(1.1);
+}

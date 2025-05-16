@@ -13,12 +13,14 @@ type PostImageGalleryProps = {
 const PostImageGallery = ({ images, altText }: PostImageGalleryProps) => {
   return (
     <Swiper
-      pagination={true}
+      className="custom-swiper"
+      pagination={{ clickable: true }}
       modules={[Pagination]}
       style={{
         width: "100%",
       }}
       slidesPerView={1}
+      loop={true}
     >
       {images.map((image) => {
         return (
