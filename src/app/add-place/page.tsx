@@ -1,5 +1,5 @@
 import CreatePostForm from "@/components/features/form/CreatePostForm";
-import { getTelegramPosts } from "@/repositories";
+import { getTelegramPosts } from "@/adapters";
 
 async function page() {
   const telegramPosts = (await getTelegramPosts()) || [];

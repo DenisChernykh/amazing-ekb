@@ -7,9 +7,10 @@ import AppProviders from "@/providers/AppProviders";
 import Header from "@/components/shared/Header";
 
 import CategoriesProvider from "@/providers/client/CategoriesProvider";
-import { getCategories, getPosts } from "@/repositories";
+import { getPosts } from "@/adapters";
 import PostsProvider from "@/providers/client/PostsProvider";
 import BottomNavigation from "@/components/shared/BottomNavigation";
+import { getCategories } from "@/adapters/categories/getCategories";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

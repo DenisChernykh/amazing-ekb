@@ -13,7 +13,8 @@
     "postinstall": "pnpm generate",
     "vercel-build": "pnpm generate && pnpm pmdep && pnpm build",
     "seed": "pnpm exec tsx prisma/seeds/createTelegramPostsSeed.ts",
-    "seed:images": "pnpm exec tsx prisma/seeds/uploadPhotoToBucket.ts"
+    "seed:images": "pnpm exec tsx prisma/seeds/uploadPhotoToBucket.ts",
+    "types": "npx tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

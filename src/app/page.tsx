@@ -1,6 +1,7 @@
+import { getPosts } from "@/adapters";
 import AuthInitClient from "@/components/features/auth/AuthInitClient";
 import PostsList from "@/components/features/posts/PostsList";
-import { getPosts } from "@/repositories";
+
 
 export default async function Home() {
   const posts = (await getPosts()) || [];

@@ -18,13 +18,14 @@ type PostCardProps = {
 };
 
 const PostCard = ({ post }: PostCardProps) => {
+  const sortedImages = [
+    ...post.telegramPost.images.filter((img) => img.mainImage),
+    ...post.telegramPost.images.filter((img) => !img.mainImage),
+  ];
   return (
     <Card className="gap-4 py-0">
       <CardContent className="relative flex rounded-2xl p-0">
-        <PostImageGallery
-          images={post.telegramPost.images}
-          altText={post.title}
-        />
+        <PostImageGallery images={sortedImages} altText={post.title} />
       </CardContent>
       <CardHeader className="grow gap-0 px-2">
         <CardTitle>{post.title}</CardTitle>

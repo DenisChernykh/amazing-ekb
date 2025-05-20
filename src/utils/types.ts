@@ -17,7 +17,14 @@ export type ImageType = {
 	mainImage: boolean
 };
 
-
+export type GroupedMessage = {
+	id: number,
+	text: string,
+	date: Date,
+	channelId: string,
+	postLink?: string,
+	photoPaths: string[]
+}
 
 export type TelegramPost = {
 	id: string;

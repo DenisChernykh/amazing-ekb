@@ -4,7 +4,7 @@ import prompts from 'prompts'
 import path from 'path'
 import * as fs from 'node:fs'
 import { PrismaClient } from '@prisma/client'
-import { uploadToStorage } from '../prisma/seeds/uploadToStorage'
+
 import supabase from '@/utils/supabase'
 
 const localPrisma = new PrismaClient({
