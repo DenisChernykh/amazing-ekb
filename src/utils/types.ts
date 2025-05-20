@@ -23,7 +23,7 @@ export type GroupedMessage = {
 	date: Date,
 	channelId: string,
 	postLink?: string,
-	photoPaths: string[]
+	photoPaths: { localPath: string; supabasePath: string }[]
 }
 
 export type TelegramPost = {

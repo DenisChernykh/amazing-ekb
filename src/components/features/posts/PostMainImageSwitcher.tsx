@@ -1,4 +1,3 @@
-import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { cn } from "@/lib/utils";
 import { Crown } from "lucide-react";
 
@@ -6,16 +5,18 @@ type PostMainImageSwitcherProps = {
   className?: string;
   isMain: boolean;
   onClick: () => void;
+  isAdmin: boolean;
 };
 
 const PostMainImageSwitcher = ({
   className,
   onClick,
   isMain,
+  isAdmin,
 }: PostMainImageSwitcherProps) => {
-  const { isAdmin, loading } = useIsAdmin();
   const isDevelopment = process.env.NODE_ENV === "development";
-  if ((loading || !isAdmin) && !isDevelopment) return null;
+  if (!isAdmin && !isDevelopment) return null;
+
   return (
     <div className={cn(className, "absolute top-5 left-5 z-10 cursor-pointer")}>
       <Crown

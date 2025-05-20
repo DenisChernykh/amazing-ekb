@@ -13,4 +13,5 @@ export type UpsertTelegramPostInput = {
 export type ImageInput = {
 	telegramPostId: string
 	path: string
+	mainImage: boolean
 }

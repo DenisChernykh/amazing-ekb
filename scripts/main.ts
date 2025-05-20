@@ -23,8 +23,8 @@ const main = async () => {
 
 	const localRepo = new PrismaTelegramPostRepository(localDb)
 	const supabaseRepo = new PrismaTelegramPostRepository(supabaseDb)
-	const upsertLocal = new UpsertTelegramPostUseCase(localRepo)
-	const upsertSupabase = new UpsertTelegramPostUseCase(supabaseRepo)
+	const upsertLocal = new UpsertTelegramPostUseCase(localRepo, 'local')
+	const upsertSupabase = new UpsertTelegramPostUseCase(supabaseRepo, 'supabase')
 
 	const tgClient = new TelegramClientService({
 		apiId: +process.env.TG_API_ID!,
