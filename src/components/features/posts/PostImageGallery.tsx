@@ -7,26 +7,32 @@ import { Pagination } from "swiper/modules";
 import PostMainImageSwitcher from "./PostMainImageSwitcher";
 import { useState } from "react";
 import { updateMainImage } from "@/actions/updateMainImage";
-import { useIsAdmin } from "@/hooks/useIsAdmin";
 
 type PostImageGalleryProps = {
   images: ImageType[];
   altText: string;
+  isAdmin: boolean;
+  loading: boolean;
 };
 
-const PostImageGallery = ({ images, altText }: PostImageGalleryProps) => {
+const PostImageGallery = ({
+  images,
+  isAdmin,
+  loading,
+  altText,
+}: PostImageGalleryProps) => {
   const initialMainImage = images.find((image) => image.mainImage);
   const [mainImageId, setMainImageId] = useState<string | null>(
     initialMainImage?.id ?? null,
   );
-  const { isAdmin, loading } = useIsAdmin();
+
   const handleMainImageChange = (newId: string) => {
     setMainImageId(newId);
     void updateMainImage(newId).catch(() => {
       setMainImageId(initialMainImage?.id ?? null);
     });
   };
-  if (loading) return null; 
+  if (loading) return null;
   return (
     <Swiper
       className="custom-swiper"

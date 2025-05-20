@@ -4,6 +4,7 @@ import { useFilter } from "@/hooks/useFilter";
 import { Post } from "@/utils/types";
 import AdminButton from "./AdminButton";
 import PostCard from "./PostCard";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 
 type PostsListProps = {
   initialPosts: Post[];
@@ -12,7 +13,7 @@ type PostsListProps = {
 
 function PostsList({ initialPosts }: PostsListProps) {
   const { category } = useFilter();
-
+  const { isAdmin, loading } = useIsAdmin();
   const filteredPosts =
     category === "all"
       ? initialPosts
@@ -23,7 +24,14 @@ function PostsList({ initialPosts }: PostsListProps) {
       <AdminButton />
       <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:space-y-0">
         {filteredPosts.map((post) => {
-          return <PostCard key={post.id} post={post} />;
+          return (
+            <PostCard
+              isAdmin={isAdmin}
+              loading={loading}
+              key={post.id}
+              post={post}
+            />
+          );
         })}
       </div>
     </>
