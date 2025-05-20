@@ -12,13 +12,12 @@ type PostImageGalleryProps = {
   images: ImageType[];
   altText: string;
   isAdmin: boolean;
-  loading: boolean;
 };
 
 const PostImageGallery = ({
   images,
   isAdmin,
-  loading,
+
   altText,
 }: PostImageGalleryProps) => {
   const initialMainImage = images.find((image) => image.mainImage);
@@ -32,7 +31,7 @@ const PostImageGallery = ({
       setMainImageId(initialMainImage?.id ?? null);
     });
   };
-  if (loading) return null;
+
   return (
     <Swiper
       className="custom-swiper"
@@ -40,6 +39,7 @@ const PostImageGallery = ({
       modules={[Pagination]}
       style={{
         width: "100%",
+      
       }}
       slidesPerView={1}
       loop={false}

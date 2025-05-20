@@ -18,20 +18,13 @@ function PostsList({ initialPosts }: PostsListProps) {
     category === "all"
       ? initialPosts
       : initialPosts.filter((post) => post.category.name === category);
-
+  if (loading) return null;
   return (
     <>
       <AdminButton />
       <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:space-y-0">
         {filteredPosts.map((post) => {
-          return (
-            <PostCard
-              isAdmin={isAdmin}
-              loading={loading}
-              key={post.id}
-              post={post}
-            />
-          );
+          return <PostCard isAdmin={isAdmin} key={post.id} post={post} />;
         })}
       </div>
     </>

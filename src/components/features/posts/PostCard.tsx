@@ -16,10 +16,10 @@ import PostImageGallery from "./PostImageGallery";
 type PostCardProps = {
   post: Post;
   isAdmin: boolean;
-  loading: boolean;
+
 };
 
-const PostCard = ({ post, isAdmin, loading }: PostCardProps) => {
+const PostCard = ({ post, isAdmin }: PostCardProps) => {
   const sortedImages = [
     ...post.telegramPost.images.filter((img) => img.mainImage),
     ...post.telegramPost.images.filter((img) => !img.mainImage),
@@ -27,7 +27,11 @@ const PostCard = ({ post, isAdmin, loading }: PostCardProps) => {
   return (
     <Card className="gap-4 py-0">
       <CardContent className="relative flex rounded-2xl p-0">
-        <PostImageGallery loading={loading} isAdmin={isAdmin} images={sortedImages} altText={post.title} />
+        <PostImageGallery
+          isAdmin={isAdmin}
+          images={sortedImages}
+          altText={post.title}
+        />
       </CardContent>
       <CardHeader className="grow gap-0 px-2">
         <CardTitle>{post.title}</CardTitle>

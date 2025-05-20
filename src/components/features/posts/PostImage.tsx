@@ -1,4 +1,3 @@
-
 import { getImageUrl } from "@/utils/get-supabase-storage";
 
 import Image from "next/image";
@@ -16,7 +15,7 @@ const PostImage = ({ path, altText }: PostImageProps) => {
   return (
     <>
       {isLoading && (
-        <div className="bg-muted absolute inset-0 animate-pulse rounded-xl" />
+        <div className="bg-muted absolute inset-0 aspect-square animate-pulse rounded-xl" />
       )}
       <Image
         className="rounded-xl object-cover"
