@@ -1,17 +1,15 @@
 'use server'
+import { handleError } from '@/lib/errors'
 import { updateMainImage as updateMainImageImpl } from '@/lib/updateMainImage'
+import { Result } from '@/utils/types'
 
-export async function updateMainImage(imageId: string) {
+export async function updateMainImage(imageId: string): Promise<Result> {
 	try {
 		await updateMainImageImpl(imageId)
 
-		return { message: 'Главное изображение успешно обновлено' }
+		return { success: true, message: 'Главное изображение успешно обновлено' }
 	} catch (error: unknown) {
-		console.error('Ошибка при обновлении главного изображения:', error)
-		if (error instanceof Error) {
-			return { error: error.message }
-		}
-		return { error: 'Не удалось обновить главное изображение' }
-	}
+		return handleError(error)
 
+	}
 }

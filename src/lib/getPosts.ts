@@ -1,9 +1,10 @@
-import { PrismaPostRepository } from "@/adapters/PrismaPostRepository";
-import { GetPostsUseCase } from "@/use-cases/GetPostsUseCase";
-import prisma from "@/utils/db";
 
-export async function getPosts() {
-	const repo = new PrismaPostRepository(prisma)
-	const useCase = new GetPostsUseCase(repo)
-	return useCase.execute()
+
+import { getPostsUseCase } from "@/di/useCases";
+import { withErrorHandling } from "./withErrorHandling";
+import { Post, Result } from "@/utils/types";
+
+export async function getPosts(): Promise<Result<Post[]>> {
+
+	return withErrorHandling(() => getPostsUseCase.execute())
 }

@@ -1,4 +1,4 @@
-import { Result } from "@/utils/types";
+import { QuizResult } from "@/utils/types";
 import WrongItem from "./WrongItem";
 import RightItem from "./RightItem";
 import { cn } from "@/lib/utils";
@@ -7,7 +7,7 @@ import ResultsButtons from "./ResultsButtons";
 type ResultsProps = {
   calculateCorrectAnswers: () => number;
   totalQuestions: number;
-  getResults: () => Result[];
+  getResults: () => QuizResult[];
   handleRepeatQuiz: () => void;
 };
 function Results({

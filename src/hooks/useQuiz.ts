@@ -1,5 +1,5 @@
 import quizData from '@/app/quiz/data.json'
-import { Answer, QuizReturn, Result } from '@/utils/types'
+import { Answer, QuizResult, QuizReturn } from '@/utils/types'
 import { useState } from 'react'
 
 
@@ -24,7 +24,7 @@ export function useQuiz(): QuizReturn {
 			return isCorrect ? totalPoints + 1 : totalPoints
 		}, 0)
 	}
-	const getResults = (): Result[] => {
+	const getResults = (): QuizResult[] => {
 		return questions.map((question) => {
 			const relatedAnswer = userAnswers.find((userAnswer) => userAnswer.questionId === question.id)
 			const isCorrect = relatedAnswer?.selected === question.correctAnswer

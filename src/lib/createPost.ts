@@ -1,8 +1,9 @@
+import { createPostUseCase } from "@/di/useCases";
 
-import { createPostUseCase } from "./useCases";
+
 
 
 export async function createPost(formData: FormData) {
 
-	return createPostUseCase.exexute(formData)
+	return createPostUseCase.execute(formData)
 }

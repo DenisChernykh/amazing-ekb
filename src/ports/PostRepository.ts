@@ -3,7 +3,6 @@ import { Post } from "@/utils/types";
 export interface PostRepository {
 	getAllPosts(): Promise<Post[]>;
 	create(post: CreatePostInput): Promise<void>
-	updateMainImage(imageId: string): Promise<{ success: boolean; message: string }>
 }
 
 type CreatePostInput = {
@@ -13,3 +12,5 @@ type CreatePostInput = {
 	categoryId: string;
 	telegramPostId: string;
 }
+
+

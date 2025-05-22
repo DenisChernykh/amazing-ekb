@@ -45,7 +45,7 @@ export type Question = {
 	options: string[]
 	correctAnswer: string
 }
-export type Result = {
+export type QuizResult = {
 	id: number
 	question: string
 	selected: string | undefined
@@ -64,7 +64,12 @@ export type QuizReturn = {
 	calculateCorrectAnswers: () => number
 	totalQuestions: number
 	questionNumber: number
-	getResults: () => Result[]
+	getResults: () => QuizResult[]
 	handleRepeatQuiz: () => void
 
 }
+
+export type Result<T = void> =
+	| { success: true; data: T; message?: string }
+	| { success: false; message: string }
+	| { success: true, message: string }

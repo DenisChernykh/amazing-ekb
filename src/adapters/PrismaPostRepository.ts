@@ -2,11 +2,12 @@
 
 
 import { PostRepository } from "@/ports/PostRepository";
+import { Post } from "@/utils/types";
 import { PrismaClient } from "@prisma/client";
 
 export class PrismaPostRepository implements PostRepository {
 	constructor(private prisma: PrismaClient) { }
-	async getAllPosts() {
+	async getAllPosts(): Promise<Post[]> {
 		return this.prisma.post.findMany({
 			select: {
 				id: true,
@@ -25,6 +26,9 @@ export class PrismaPostRepository implements PostRepository {
 								altText: true,
 								mainImage: true,
 								id: true
+							},
+							orderBy: {
+								mainImage: 'desc'
 							}
 						}
 					}
@@ -53,63 +57,8 @@ export class PrismaPostRepository implements PostRepository {
 		mapUrl: string;
 		categoryId: string;
 		telegramPostId: string;
-	}) {
+	}): Promise<void> {
 		await this.prisma.post.create({ data: input })
 	}
-	async updateMainImage(imageId: string): Promise<{ success: boolean; message: string }> {
-		try {
-			const image = await this.prisma.image.findUnique({
-				where: {
-					id: imageId
-				},
-				select: {
-					id: true,
-					telegramPostId: true
-				}
-			})
-			if (!image) {
-				return {
-					success: false,
-					message: `Изображение с id ${imageId} не найдено`
-				}
 
-			}
-			if (!image.telegramPostId) {
-				return {
-					success: false,
-					message: `Изображение с id ${imageId} не привязано к посту`
-				}
-			}
-			const telegramPostId = image.telegramPostId
-
-			const resetResult = await this.prisma.image.updateMany({
-				where: {
-					telegramPostId,
-
-				},
-				data: {
-					mainImage: false
-				}
-			})
-			await this.prisma.image.update({
-				where: {
-					id: imageId
-				},
-				data: {
-					mainImage: true
-				}
-			})
-			return {
-				success: true,
-				message: `Главное изображения обновлено. Сброшено ${resetResult.count} изображений`
-			}
-		} catch (error) {
-			console.error("Ошибка обновления главного изображения:", error);
-			return {
-				success: false,
-				message: `Произошла непредвиденная ошибка при обновлении изображения`
-			}
-		}
-
-	}
 }
