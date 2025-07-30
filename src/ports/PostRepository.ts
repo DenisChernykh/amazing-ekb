@@ -1,16 +1,10 @@
-import { Post } from "@/utils/types";
+import { AppErrorCode, CreatePostInput, Post, ResultType } from "@/utils/types";
+
 
 export interface PostRepository {
-	getAllPosts(): Promise<Post[]>;
-	create(post: CreatePostInput): Promise<void>
+	getAllPosts(): Promise<ResultType<Post[], AppErrorCode>>;
+	create(post: CreatePostInput): Promise<ResultType<{ id: string }, AppErrorCode>>;
 }
 
-type CreatePostInput = {
-	title: string;
-	price: string;
-	mapUrl: string;
-	categoryId: string;
-	telegramPostId: string;
-}
 
 

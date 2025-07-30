@@ -1,5 +1,8 @@
-import { Category } from "@/utils/types";
+
+import { AppErrorCode, Category, createCategoryInput, ResultType } from "@/utils/types";
 
 export interface CategoryRepository {
-	findCategoryByName(name: string): Promise<Category | null>
+	getAllCategories(): Promise<ResultType<Category[], AppErrorCode>>
+	findCategoryByName(name: string): Promise<ResultType<Category, AppErrorCode>>
+	create(input: createCategoryInput): Promise<ResultType<{ id: string }, AppErrorCode>>
 }

@@ -1,12 +1,15 @@
-import { Errors } from "@/lib/errors";
+
 import { CategoryRepository } from "@/ports/CategoryRepository";
 import { CategoryResolver } from "@/ports/CategoryResolver";
+import { AppErrorCode, ResultType } from "@/utils/types";
 
 export class DefaultCategoryResolver implements CategoryResolver {
 	constructor(private readonly categoryRepo: CategoryRepository) { }
-	async resolve(name: string): Promise<string> {
-		const category = await this.categoryRepo.findCategoryByName(name)
-		if (!category) throw Errors.Validation(`Категория "${name}" не найдена`)
-		return category.id
+	async resolve(name: string): Promise<ResultType<string, AppErrorCode>> {
+		const result = await this.categoryRepo.findCategoryByName(name)
+		if (!result.success) {
+			return { success: false, error: result.error }
+		}
+		return { success: true, data: result.data.id }
 	}
 }

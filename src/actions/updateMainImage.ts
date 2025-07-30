@@ -1,15 +1,14 @@
 'use server'
-import { handleError } from '@/lib/errors'
-import { updateMainImage as updateMainImageImpl } from '@/lib/updateMainImage'
-import { Result } from '@/utils/types'
+import { updateMainImageUseCase } from '@/di/useCases'
+import { Result } from '@/utils/result'
 
-export async function updateMainImage(imageId: string): Promise<Result> {
-	try {
-		await updateMainImageImpl(imageId)
+import { ApiResponse, AppErrorCode } from '@/utils/types'
 
-		return { success: true, message: 'Главное изображение успешно обновлено' }
-	} catch (error: unknown) {
-		return handleError(error)
-
+export async function updateMainImage(imageId: string): Promise<ApiResponse<{ id: true }, AppErrorCode>> {
+	const result = await updateMainImageUseCase.execute(imageId)
+	if (result.success) {
+		return { success: true, data: { id: true }, message: 'Главное изображение обновлено' }
+	} else {
+		return Result.fail(result.error)
 	}
 }

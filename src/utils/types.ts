@@ -1,3 +1,5 @@
+import { ZodIssue } from "zod";
+
 export type Category = {
 	id: string;
 	name: string;
@@ -69,7 +71,38 @@ export type QuizReturn = {
 
 }
 
-export type Result<T = void> =
-	| { success: true; data: T; message?: string }
-	| { success: false; message: string }
-	| { success: true, message: string }
+
+
+export type ResultType<T, E = AppErrorCode> = | { success: true, data: T } | { success: false, error: E; meta?: Record<string, unknown>; }
+export const AppErrorCode = {
+
+	CATEGORY_NOT_FOUND: "CATEGORY_NOT_FOUND",
+	VALIDATION_ERROR: 'VALIDATION_ERROR',
+	UNKNOWN_ERROR: 'UNKNOWN_ERROR',
+	UNIQUE_CONSTRAINT_VIOLATION: 'UNIQUE_CONSTRAINT_VIOLATION',
+	FOREIGN_KEY_VIOLATION: 'FOREIGN_KEY_VIOLATION',
+	NOT_NULL_VIOLATION: 'NOT_NULL_VIOLATION',
+	DATABASE_CONNECTION_ERROR: 'DATABASE_CONNECTION_ERROR',
+	DATABASE_ERROR: 'DATABASE_ERROR',
+	IMAGE_NOT_FOUND: 'IMAGE_NOT_FOUND',
+	IMAGE_NOT_LINKED_TO_POST: 'IMAGE_NOT_LINKED_TO_POST',
+	CATEGORY_ALREADY_EXISTS: 'CATEGORY_ALREADY_EXISTS'
+} as const
+export type AppErrorCode = typeof AppErrorCode[keyof typeof AppErrorCode]
+export type CreatePostInput = {
+	title: string
+	price: string
+	mapUrl: string
+	categoryId: string
+	telegramPostId: string
+}
+export type createCategoryInput = {
+	name: string
+}
+
+export type ApiResponse<T = unknown, E = string> = | { success: true, data: T; message?: string } | { success: false; error: E; errors?: ZodIssue[]; message?: string }
+
+export type DecodedError = {
+	error: AppErrorCode;
+	meta?: Record<string, unknown>
+}

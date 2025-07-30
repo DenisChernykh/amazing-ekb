@@ -1,6 +1,9 @@
+import { AppErrorCode, ResultType } from "@/utils/types"
+
 export interface ImageRepository {
-	
-	findImageById(id: string): Promise<{ id: string; telegramPostId: string | null } | null>
-	resetMainImage(telegramPostId: string): Promise<void>
-	setMainImage(imageId: string): Promise<void>
+
+	findImageById(id: string): Promise<ResultType<{ id: string, telegramPostId: string }, AppErrorCode>>
+	resetMainImage(telegramPostId: string): Promise<ResultType<{ id: string }, AppErrorCode>>
+	setMainImage(imageId: string): Promise<ResultType<{ id: string }, AppErrorCode>>
+	updateMainImageAtomic(imageId: string): Promise<ResultType<{ id: string }, AppErrorCode>>
 }

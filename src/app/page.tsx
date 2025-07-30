@@ -1,10 +1,10 @@
-import { getPosts } from "@/adapters";
 import AuthInitClient from "@/components/features/auth/AuthInitClient";
 import PostsList from "@/components/features/posts/PostsList";
-
+import { getPostsUseCase } from "@/di";
 
 export default async function Home() {
-  const posts = (await getPosts()) || [];
+  const postResult = await getPostsUseCase.execute();
+  const posts = postResult.success ? postResult.data : [];
 
   return (
     <div className="container mx-auto p-4">
