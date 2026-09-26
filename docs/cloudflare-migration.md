@@ -4,13 +4,13 @@
 
 The implementation, production build and 16 automated tests pass. Local browser checks
 cover catalogue rendering, six-category filtering, signed login, access restrictions
-and creating a place card. Both D1 databases contain the source snapshot: 6 categories,
+and creating a place card. At cutover, both D1 databases matched the source snapshot: 6 categories,
 68 profiles, 72 Telegram posts, 18 place cards and 222 image records. All 222 source
 photos are backed up locally and published as staging and production Static Assets.
 
 Cloudflare email verification is resolved. Both Workers are published with separate
-secrets and working health endpoints. Every field in both databases and SHA-256 hashes
-of all 222 publicly served photos match the backup. The final Supabase snapshot at
+secrets and working health endpoints. Before cutover, every field in both databases and
+SHA-256 hashes of all 222 publicly served photos were verified against the backup. The final Supabase snapshot at
 2026-09-26 07:33:01 UTC, taken after source writes were frozen, matches the imported data.
 Staging API reads, writes, token separation and a signed test-user session have been
 checked; its temporary test records were removed.
@@ -21,8 +21,9 @@ The cutover is complete: `https://amazing-ekb.vercel.app` serves deployment
 `dpl_HFJer2FPjj7KT7XLfueiLKHUwXqh` using the production Worker and D1. Browser checks
 on the live URL confirm all 18 cards, working photos, anonymous admin restrictions and
 rejection of forged Telegram login. Six-category filtering was verified on the deployed
-preview. A genuine Telegram login still requires the user's acceptance check; tests used
-isolated staging/local sessions, never fabricated production identities.
+preview. The user confirmed that reopening the Mini App in Telegram, signing in and
+accessing the administrator controls all work. Production acceptance is complete.
+Automated session checks used isolated staging/local identities.
 
 The original Supabase data and photo bucket are retained. The five app tables have
 `cloudflare_migration_read_only` triggers to prevent writes from retired app sessions.
