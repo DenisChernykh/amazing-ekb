@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { z } from 'zod';
 import { snapshotSchema, tableNames } from './migration';
 import { normalizeImagePath } from '../../src/shared/data-contracts';
-import { verifyAssets } from './assets';
+import { verifyAssets, verifyPublishedAssets } from './assets';
 
 async function main() {
   const input = process.argv[2];
@@ -28,10 +28,7 @@ async function main() {
   if (remote && !process.argv.includes('--database-only')) {
     const base = process.env.CLOUDFLARE_API_URL;
     if (!base) throw new Error('CLOUDFLARE_API_URL required to verify published images');
-    for (const file of manifest.files) {
-      const response = await fetch(new URL(file.path, base), { method: 'HEAD', signal: AbortSignal.timeout(30_000) });
-      if (!response.ok || Number(response.headers.get('content-length')) !== file.bytes) throw new Error(`Published image mismatch: ${file.path}`);
-    }
+    await verifyPublishedAssets(base, manifest);
   }
   console.log(`Verified ${manifest.files.length} local assets`);
   if (remote) console.log(process.argv.includes('--database-only') ? 'Remote database verified; public assets were not checked' : 'Remote database and public assets verified');

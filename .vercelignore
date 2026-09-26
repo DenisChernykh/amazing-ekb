@@ -3,8 +3,8 @@
 .pnpm-store
 .telegram-session
 .migration-pending.json
-cloudflare
-tests
-prisma
-public/images
+/cloudflare
+/tests
+/prisma
+/public/images
 .env*

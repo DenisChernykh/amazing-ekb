@@ -34,3 +34,18 @@ test('fresh checkout restores the full inventory and refuses corrupt or missing 
     await rm(root, { recursive: true, force: true });
   }
 });
+
+test('published photos are verified without Content-Length and same-size corruption is rejected', async () => {
+  const { verifyPublishedAssets, sha256 } = await import('../scripts/cloudflare/assets');
+  const originalFetch = globalThis.fetch;
+  const data = Buffer.from('photo');
+  const manifest = { version: 1 as const, files: [{ path: '/images/test.jpg', bytes: data.length, sha256: sha256(data) }] };
+  try {
+    globalThis.fetch = async () => new Response(data);
+    await verifyPublishedAssets('https://assets.test', manifest);
+    globalThis.fetch = async () => new Response('wrong');
+    await assert.rejects(verifyPublishedAssets('https://assets.test', manifest), /Published image mismatch/);
+    globalThis.fetch = async () => new Response(null, { status: 404 });
+    await assert.rejects(verifyPublishedAssets('https://assets.test', manifest), /Published image unavailable/);
+  } finally { globalThis.fetch = originalFetch; }
+});

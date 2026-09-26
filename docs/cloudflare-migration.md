@@ -2,18 +2,33 @@
 
 ## Rollout status — 2026-09-26
 
-The implementation, production build and 15 automated tests pass. Local browser checks
+The implementation, production build and 16 automated tests pass. Local browser checks
 cover catalogue rendering, six-category filtering, signed login, access restrictions
 and creating a place card. Both D1 databases contain the source snapshot: 6 categories,
 68 profiles, 72 Telegram posts, 18 place cards and 222 image records. All 222 source
-photos are backed up locally and uploaded as staging Static Assets.
+photos are backed up locally and published as staging and production Static Assets.
 
-The staging Worker and its secrets are uploaded, but Cloudflare rejects enabling its
-`workers.dev` address with error **10034 (email verification required)**. The dashboard
-also displays **Verify your account**. The staging health URL currently returns 404.
-Vercel production still uses the original Supabase deployment; no production environment
-values were changed. Finish account verification, then follow the cutover steps below.
-Recheck source data for changes before switching, because the old deployment remains live.
+Cloudflare email verification is resolved. Both Workers are published with separate
+secrets and working health endpoints. Every field in both databases and SHA-256 hashes
+of all 222 publicly served photos match the backup. The final Supabase snapshot at
+2026-09-26 07:33:01 UTC, taken after source writes were frozen, matches the imported data.
+Staging API reads, writes, token separation and a signed test-user session have been
+checked; its temporary test records were removed.
+
+Vercel staging and production variables are configured, preserving `TG_BOT_TOKEN`.
+Session signing keys were rotated; users will sign in again through Telegram.
+The cutover is complete: `https://amazing-ekb.vercel.app` serves deployment
+`dpl_HFJer2FPjj7KT7XLfueiLKHUwXqh` using the production Worker and D1. Browser checks
+on the live URL confirm all 18 cards, working photos, anonymous admin restrictions and
+rejection of forged Telegram login. Six-category filtering was verified on the deployed
+preview. A genuine Telegram login still requires the user's acceptance check; tests used
+isolated staging/local sessions, never fabricated production identities.
+
+The original Supabase data and photo bucket are retained. The five app tables have
+`cloudflare_migration_read_only` triggers to prevent writes from retired app sessions.
+The rollback scripts below remove only these migration guards. No Supabase project was
+deleted or paused. The code remains in the migration PR; deploying the old `main` branch
+would restore obsolete Supabase code, so use the migration branch until it is merged.
 
 ## Topology
 
@@ -68,8 +83,12 @@ The pre-migration production deployment is `dpl_8usFCCDuie4wdtz5Sg78huK8bcY4`
 ## Backup and import
 
 Stop manual imports and administrative edits during the final snapshot and switch.
-Pause writes to the old deployment using Vercel deployment protection/maintenance if
-other users can write. A stale snapshot must never replace a database receiving writes.
+Run `scripts/cloudflare/freeze-supabase.sql` against the source PostgreSQL database
+immediately before the final snapshot and promotion. It installs reversible statement
+triggers on the five app tables, blocking inserts, updates, deletes and truncation while
+leaving reads available. Keep these guards on the retired source to prevent writes from
+old browser sessions. If the switch is aborted, run `scripts/cloudflare/unfreeze-supabase.sql`.
+A stale snapshot must never replace a database receiving writes.
 
 For a direct PostgreSQL backup, load `SUPABASE_DB_URL`, `SUPABASE_URL` and
 `SUPABASE_SERVICE_ROLE_KEY` into a private environment, then run:
@@ -105,7 +124,9 @@ CLOUDFLARE_API_URL=https://<staging-worker>.workers.dev pnpm migration:verify .m
 ```
 
 The verifier compares every field in every row, including profile roles and relationships,
-and checks the published files against the asset manifest. Counts alone are insufficient.
+and downloads the published files to compare their byte sizes and SHA-256 hashes against
+the asset manifest. Static Assets may omit Content-Length, so a HEAD check is insufficient.
+Counts alone are insufficient.
 Test catalogue, category filtering, gallery, genuine Telegram login, admin creation,
 cover selection, repeat import and failures in staging. Use separate test credentials
 for automated authentication tests, never forge production user sessions.
@@ -147,14 +168,16 @@ enforces these limits; check current Cloudflare limits when the catalogue grows.
 
 ## Rollback
 
-Before any new D1 writes, restore the recorded Vercel deployment to route traffic back to
-Supabase. Deployment environment values are captured with that deployment. Do not delete
-the Cloudflare data or original source backup.
+Before any new D1 writes, run `scripts/cloudflare/unfreeze-supabase.sql` against Supabase,
+then restore the recorded Vercel deployment to route traffic back to Supabase. Deployment
+environment values are captured with that deployment. Do not delete the Cloudflare data
+or original source backup.
 
 After D1 has accepted new writes, a Vercel rollback alone would lose those changes from the
 user's view. First set `READ_ONLY=true` and publish the Worker, stop importers, export D1
 with `wrangler d1 export DB --remote --output <private-backup.sql>`, and reconcile the
-new/changed profiles, categories, posts and image choices into the rollback database.
+new/changed profiles, categories, posts and image choices into the rollback database
+(remove its write guards with `scripts/cloudflare/unfreeze-supabase.sql` before reconciliation).
 Verify before switching. No automatic reverse migration is provided.
 
 To roll back Worker code while keeping D1, use a known compatible Worker version. Never

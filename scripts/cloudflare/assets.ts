@@ -53,6 +53,21 @@ export async function verifyAssets() {
   return manifest;
 }
 
+export async function verifyPublishedAssets(base: string, manifest: z.infer<typeof manifestSchema>) {
+  const pending = [...manifest.files];
+  await Promise.all(Array.from({ length: 6 }, async () => {
+    for (;;) {
+      const entry = pending.pop();
+      if (!entry) return;
+      // Static Assets may omit Content-Length, including on HEAD responses.
+      const response = await fetch(new URL(entry.path, base), { signal: AbortSignal.timeout(60_000) });
+      if (!response.ok) throw new Error(`Published image unavailable (${response.status}): ${entry.path}`);
+      const data = new Uint8Array(await response.arrayBuffer());
+      if (data.length !== entry.bytes || sha256(data) !== entry.sha256) throw new Error(`Published image mismatch: ${entry.path}`);
+    }
+  }));
+}
+
 export async function writeManifest() {
   const files: z.infer<typeof manifestSchema>['files'] = [];
   async function walk(directory: string) {
