@@ -25,11 +25,21 @@ const PostImageGallery = ({
     initialMainImage?.id ?? null,
   );
 
-  const handleMainImageChange = (newId: string) => {
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const handleMainImageChange = async (newId: string) => {
+    if (saving) return;
+    const previousId = mainImageId;
+    setSaving(true);
+    setSaveError(null);
     setMainImageId(newId);
-    void updateMainImage(newId).catch(() => {
-      setMainImageId(initialMainImage?.id ?? null);
-    });
+    try {
+      const result = await updateMainImage(newId);
+      if (!result.success) throw new Error(result.error);
+    } catch {
+      setMainImageId(previousId);
+      setSaveError('Не удалось сохранить обложку. Попробуйте ещё раз.');
+    } finally { setSaving(false); }
   };
 
   return (
@@ -45,6 +55,7 @@ const PostImageGallery = ({
       loop={false}
       initialSlide={initialMainImage ? images.indexOf(initialMainImage) : 0}
     >
+      {saveError && <p role="alert" className="absolute bottom-0 z-20 bg-white p-2 text-sm text-red-700">{saveError}</p>}
       {images.map((image) => {
         return (
           <SwiperSlide key={image.id}>

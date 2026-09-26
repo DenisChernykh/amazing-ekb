@@ -4,7 +4,8 @@ import { getPostsUseCase } from "@/di";
 
 export default async function Home() {
   const postResult = await getPostsUseCase.execute();
-  const posts = postResult.success ? postResult.data : [];
+  if (!postResult.success) throw new Error(postResult.error);
+  const posts = postResult.data;
 
   return (
     <div className="container mx-auto p-4">

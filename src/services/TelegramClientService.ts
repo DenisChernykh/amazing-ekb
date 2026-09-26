@@ -42,9 +42,6 @@ export class TelegramClientService {
 	}
 
 	async fetchMessages(channelUsername: string, limit = 500): Promise<Api.Message[]> {
-		await this.client.sendMessage("me", { message: "Привет, Денис" });
-		console.log("Вы авторизованы как Денис");
-
 		const channel = await this.client.getEntity(channelUsername);
 		const messages = await this.client.getMessages(channel, { limit });
 		const onlyMessages = messages.filter((msg): msg is Api.Message => msg instanceof Api.Message);
@@ -73,7 +70,7 @@ export class TelegramClientService {
 			if (!mainMsg) continue;
 
 			const groupId = mainMsg.id;
-			const photoPaths: { localPath: string; supabasePath: string }[] = [];
+			const photoPaths: { localPath: string }[] = [];
 
 			for (const [index, msg] of group.entries()) {
 				if (msg.media instanceof Api.MessageMediaPhoto) {
@@ -104,25 +101,22 @@ export class TelegramClientService {
 		media: Api.MessageMediaPhoto,
 		messageId: string,
 		index: number
-	): Promise<{ localPath: string; supabasePath: string } | undefined> {
+	): Promise<{ localPath: string } | undefined> {
 		try {
 			if (!media.photo) return undefined;
 
 			const buffer = await this.client.downloadMedia(media);
-			if (!buffer || !Buffer.isBuffer(buffer)) return undefined;
+			if (!buffer || !Buffer.isBuffer(buffer)) throw new Error('Telegram returned no image data');
 
 			const fileName = `post-${messageId}-${index}.jpg`;
 
 			const localPath = await this.imageStorage.saveLocally(buffer, fileName); // ➜ /images/post...
-			await this.imageStorage.saveToSupabase(buffer, fileName); // ➜ /post...
 
 			return {
 				localPath,
-				supabasePath: `/${fileName}`, // Supabase возвращает путь без /images
 			};
 		} catch (error) {
-			console.error(`Ошибка при скачивании изображения ${messageId}:`, error);
-			return undefined;
+			throw new Error(`Failed to download image ${messageId}`, { cause: error });
 		}
 	}
 

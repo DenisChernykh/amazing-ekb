@@ -21,6 +21,8 @@ export function useIsAdmin() {
 			}
 		};
 		checkUser();
+    window.addEventListener('telegram-authenticated', checkUser);
+    return () => window.removeEventListener('telegram-authenticated', checkUser);
 	}, []);
 	return { isAdmin, loading, user };
 }

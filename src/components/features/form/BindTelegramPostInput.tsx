@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
-import { usePosts } from "@/hooks/usePosts";
 import { formSchema } from "@/schemas";
 import { TelegramPost } from "@/utils/types";
 
@@ -26,11 +25,8 @@ function BindTelegramPostInput({
   telegramPosts,
   ...props
 }: AutocompleteInputProps) {
-  const { posts } = usePosts();
-  const usedPosts = posts.map((post) => post.telegramPost.postLink);
-  const availablePosts = telegramPosts.filter(
-    (tgPost) => !usedPosts.includes(tgPost.postLink),
-  );
+  // The data API returns visible Telegram posts without an existing place card.
+  const availablePosts = telegramPosts;
 
   const {
     setIsOpen,

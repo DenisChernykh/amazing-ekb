@@ -25,7 +25,7 @@ export type GroupedMessage = {
 	date: Date,
 	channelId: string,
 	postLink?: string,
-	photoPaths: { localPath: string; supabasePath: string }[]
+	photoPaths: { localPath: string }[]
 }
 
 export type TelegramPost = {
@@ -75,6 +75,11 @@ export type QuizReturn = {
 
 export type ResultType<T, E = AppErrorCode> = | { success: true, data: T } | { success: false, error: E; meta?: Record<string, unknown>; }
 export const AppErrorCode = {
+  UNAUTHORIZED: 'UNAUTHORIZED',
+  FORBIDDEN: 'FORBIDDEN',
+  NOT_FOUND: 'NOT_FOUND',
+  ASSET_NOT_PUBLISHED: 'ASSET_NOT_PUBLISHED',
+  READ_ONLY: 'READ_ONLY',
 
 	CATEGORY_NOT_FOUND: "CATEGORY_NOT_FOUND",
 	VALIDATION_ERROR: 'VALIDATION_ERROR',
