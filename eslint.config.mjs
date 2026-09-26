@@ -7,6 +7,7 @@ const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
+  resolvePluginsRelativeTo: dirname(fileURLToPath(import.meta.resolve('eslint-config-next/package.json'))),
 });
 
 const eslintConfig = [

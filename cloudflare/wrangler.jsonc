@@ -1,0 +1,36 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "amazing-ekb-data",
+  "account_id": "16671a495a9b344d6f8ca84beb5228cd",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-26",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "minify": true,
+  "observability": { "enabled": true, "head_sampling_rate": 1 },
+  "vars": { "READ_ONLY": "false", "DEPLOYMENT_ENV": "production" },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "amazing-ekb",
+    "database_id": "2baab7df-e106-4b71-bcdd-cf135042bd58",
+    "migrations_dir": "migrations"
+  }],
+  "assets": {
+    "directory": "./assets",
+    "binding": "ASSETS",
+    "run_worker_first": ["/v1/*", "/health"],
+    "not_found_handling": "none"
+  },
+  "env": {
+    "staging": {
+      "name": "amazing-ekb-data-staging",
+      "vars": { "READ_ONLY": "false", "DEPLOYMENT_ENV": "staging" },
+      "d1_databases": [{
+        "binding": "DB",
+        "database_name": "amazing-ekb-staging",
+        "database_id": "9215626a-bfdb-49ed-91ab-734fd5667d73",
+        "migrations_dir": "migrations"
+      }]
+    }
+  }
+}

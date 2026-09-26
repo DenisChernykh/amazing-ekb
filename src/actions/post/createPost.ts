@@ -1,4 +1,5 @@
 'use server'
+import { isCurrentUserAdmin } from '@/lib/require-admin';
 import { createPostUseCase } from '@/di/useCases';
 import { serverFormSchema } from '@/schemas';
 import { getErrorMessage } from '@/utils/errorMessages';
@@ -9,6 +10,7 @@ import { z } from 'zod';
 
 export type CreatePostDTO = z.infer<typeof serverFormSchema>
 export async function createPost(formData: FormData): Promise<ApiResponse<{ id: string }>> {
+  if (!await isCurrentUserAdmin()) return { success: false, error: 'FORBIDDEN', message: 'Недостаточно прав' };
 	const raw: Record<string, unknown> = {
 		title: formData.get("title"),
 		price: formData.get("price"),

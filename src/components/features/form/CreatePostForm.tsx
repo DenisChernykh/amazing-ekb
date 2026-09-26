@@ -8,15 +8,18 @@ import { Button } from "@/components/ui/button";
 import { formSchema } from "@/schemas";
 import { createPost } from "@/actions/post/createPost";
 import FormTextInput from "./FormTextInput";
-import ImageInput from "./ImageInput";
 import AutocompleteInput from "./AutocompleteInput";
 import BindTelegramPostInput from "./BindTelegramPostInput";
 import { TelegramPost } from "@/utils/types";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 type CreatePostFormProps = {
   telegramPosts: TelegramPost[];
 };
 function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
+  const router = useRouter();
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -30,6 +33,7 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setSubmitError(null);
     try {
       const formData = new FormData();
       formData.append("title", values.title);
@@ -45,10 +49,15 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
         }
       }
 
-      await createPost(formData);
-      form.reset();
-    } catch (error) {
-      console.log(error);
+      const result = await createPost(formData);
+      if (!result.success) {
+        setSubmitError(result.message ?? 'Не удалось создать пост. Попробуйте ещё раз.');
+        return;
+      }
+      router.push('/');
+      router.refresh();
+    } catch {
+      setSubmitError('Не удалось создать пост. Попробуйте ещё раз.');
     }
   }
 
@@ -76,11 +85,6 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
         />
         <FormField
           control={form.control}
-          name="images"
-          render={({ field }) => <ImageInput {...field} />}
-        />
-        <FormField
-          control={form.control}
           name="category"
           render={({ field }) => (
             <AutocompleteInput label="Категория" {...field} />
@@ -98,6 +102,8 @@ function CreatePostForm({ telegramPosts }: CreatePostFormProps) {
           )}
         />
 
+        <p className="text-sm text-muted-foreground">Фотографии берутся из выбранного Telegram-поста.</p>
+        {submitError && <p role="alert" className="text-sm text-red-700">{submitError}</p>}
         <Button disabled={form.formState.isSubmitting} type="submit">
           {form.formState.isSubmitting ? "Создание..." : "Создать пост"}
         </Button>

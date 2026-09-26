@@ -1,29 +1,30 @@
-import crypto from "crypto"
+import { createHmac, timingSafeEqual } from 'node:crypto';
+import { z } from 'zod';
 
-export const validateInitData = (initData: string, botToken: string) => {
-	const urlSearchParams = new URLSearchParams(initData);
-	const data = Object.fromEntries(urlSearchParams.entries());
+const telegramUserSchema = z.object({
+  id: z.number().int().positive().safe(), first_name: z.string().min(1).max(256),
+  last_name: z.string().max(256).optional(), username: z.string().max(256).optional(),
+  photo_url: z.string().url().max(2048).optional(),
+});
 
-	const checkString = Object.keys(data)
-		.filter(key => key !== 'hash')
-		.map(key => `${key}=${data[key]}`)
-		.sort()
-		.join('\n');
-
-	const secretKey = crypto.createHmac('sha256', botToken)
-		.update('WebAppData')
-		.digest();
-
-	const signature = crypto.createHmac('sha256', secretKey)
-		.update(checkString)
-		.digest('hex');
-
-
-	try {
-		const user = JSON.parse(decodeURIComponent(data.user));
-		return { user, signature };
-	} catch (e) {
-		console.error('Failed to parse user param', e);
-		return null;
-	}
+export function validateInitData(initData: string, botToken: string, now = Date.now()) {
+  if (!botToken || typeof initData !== 'string' || initData.length > 16_384) return null;
+  const params = new URLSearchParams(initData);
+  if (new Set(params.keys()).size !== [...params.keys()].length) return null;
+  const hash = params.get('hash');
+  const authDate = Number(params.get('auth_date'));
+  if (!hash || !/^[a-f0-9]{64}$/i.test(hash) || !Number.isSafeInteger(authDate)) return null;
+  const age = now / 1000 - authDate;
+  if (age < -30 || age > 3600) return null;
+  const check = [...params.entries()].filter(([key]) => key !== 'hash')
+    .sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)
+    .map(([key, value]) => `${key}=${value}`).join('\n');
+  const secret = createHmac('sha256', 'WebAppData').update(botToken).digest();
+  const signature = createHmac('sha256', secret).update(check).digest();
+  if (!timingSafeEqual(signature, Buffer.from(hash, 'hex'))) return null;
+  try {
+    // URLSearchParams has already decoded the value once.
+    const user = telegramUserSchema.parse(JSON.parse(params.get('user') ?? 'null'));
+    return { user };
+  } catch { return null; }
 }
