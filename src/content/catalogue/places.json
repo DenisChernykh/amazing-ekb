@@ -1,0 +1,804 @@
+[
+  {
+    "slug": "sanduny-ural",
+    "title": "Сандуны Урал",
+    "categorySlugs": ["baths", "spa"],
+    "description": "Банный отдых в центре Екатеринбурга.",
+    "publicationIds": ["telegram-270", "dzen-aPNsgs_DmV8cg5TA"],
+    "images": [
+      "/images/post-270-0.jpg",
+      "/images/post-270-1.jpg",
+      "/images/post-270-2.jpg",
+      "/images/post-270-3.jpg",
+      "/images/post-270-4.jpg",
+      "/images/post-270-5.jpg",
+      "/images/post-270-6.jpg",
+      "/images/post-270-7.jpg",
+      "/images/post-270-8.jpg"
+    ],
+    "cover": "/guide/sanduny.jpg",
+    "mapsUrl": "https://yandex.ru/maps/54/yekaterinburg/search/%D0%A1%D0%B0%D0%BD%D0%B4%D1%83%D0%BD%D1%8B/?ll=60.612821%2C56.827932&sll=60.609753%2C56.831579&sspn=0.123253%2C0.041030&z=17",
+    "legacyIds": ["ab7999ba-6f68-4adb-bf49-913dbf589ae9", "270"]
+  },
+  {
+    "slug": "engels",
+    "title": "Engels",
+    "categorySlugs": ["coffee"],
+    "description": "Кофе, вафли и время за любимым столиком.",
+    "publicationIds": [
+      "telegram-809",
+      "telegram-593",
+      "telegram-791",
+      "dzen-aXnJf20DeUcibrvH"
+    ],
+    "images": [],
+    "cover": "/guide/engels.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "duo",
+    "title": "DÜO",
+    "categorySlugs": ["coffee"],
+    "description": "Кофе, десерты и коллекции напитков.",
+    "publicationIds": [
+      "telegram-772",
+      "telegram-642",
+      "telegram-565",
+      "telegram-550",
+      "dzen-69b713010013571238862453",
+      "dzen-6a626ab835f3394cd3141341"
+    ],
+    "images": ["/guide/places/duo.jpg"],
+    "cover": "/guide/places/duo.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "u-coffee",
+    "title": "Кофейня Ü",
+    "categorySlugs": ["coffee"],
+    "description": "Кофе и необычные сезонные напитки.",
+    "publicationIds": [
+      "telegram-822",
+      "telegram-705",
+      "telegram-684",
+      "dzen-6aca5827f60ad85b6bc08323"
+    ],
+    "images": ["/guide/places/u-coffee.jpg"],
+    "cover": "/guide/places/u-coffee.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "comunale",
+    "title": "Comunale",
+    "categorySlugs": ["coffee", "pastry"],
+    "description": "Выпечка и напитки на Малышева, 25.",
+    "publicationIds": ["telegram-847"],
+    "images": ["/guide/places/comunale.jpg"],
+    "cover": "/guide/places/comunale.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "la-maison",
+    "title": "La Maison",
+    "categorySlugs": ["coffee"],
+    "description": "Кафе и фотозавтраки.",
+    "publicationIds": ["telegram-816"],
+    "images": ["/guide/places/la-maison.jpg"],
+    "cover": "/guide/places/la-maison.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "simple-coffee",
+    "title": "Simple Coffee",
+    "categorySlugs": ["coffee"],
+    "description": "Кофейни для встреч и работы.",
+    "publicationIds": [
+      "telegram-476",
+      "telegram-467",
+      "dzen-aN-JfrFGCxEsrXe0",
+      "dzen-aN6s_LFGCxEsrVrF"
+    ],
+    "images": ["/guide/places/simple-coffee.jpg"],
+    "cover": "/guide/places/simple-coffee.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "muru",
+    "title": "Muru",
+    "categorySlugs": ["coffee"],
+    "description": "Кафе для кофе и неспешной встречи.",
+    "publicationIds": ["telegram-223", "dzen-aQehBsGYezWpi5Ms"],
+    "images": [
+      "/images/post-223-0.jpg",
+      "/images/post-223-1.jpg",
+      "/images/post-223-2.jpg",
+      "/images/post-223-3.jpg",
+      "/images/post-223-4.jpg",
+      "/images/post-223-5.jpg"
+    ],
+    "cover": "/images/post-223-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/muru/205036364220/?ll=60.613480%2C56.831579&z=14.37",
+    "legacyIds": ["da1a02d8-b8f6-4845-841b-cd820581db69", "223"]
+  },
+  {
+    "slug": "gussi",
+    "title": "GUSSi",
+    "categorySlugs": ["coffee"],
+    "description": "Кофейня на Академика Сахарова, 83.",
+    "publicationIds": ["telegram-320", "dzen-aOkK9ItCRjm5Por_"],
+    "images": [
+      "/images/post-320-0.jpg",
+      "/images/post-320-1.jpg",
+      "/images/post-320-2.jpg",
+      "/images/post-320-3.jpg",
+      "/images/post-320-4.jpg",
+      "/images/post-320-5.jpg",
+      "/images/post-320-6.jpg",
+      "/images/post-320-7.jpg",
+      "/images/post-320-8.jpg"
+    ],
+    "cover": "/images/post-320-0.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "pankoff-bakery",
+    "title": "Pankoff Bakery",
+    "categorySlugs": ["coffee", "pastry"],
+    "description": "Кофейня с видом на Плотинку.",
+    "publicationIds": ["telegram-288"],
+    "images": [
+      "/images/post-288-0.jpg",
+      "/images/post-288-1.jpg",
+      "/images/post-288-2.jpg",
+      "/images/post-288-3.jpg",
+      "/images/post-288-4.jpg",
+      "/images/post-288-5.jpg",
+      "/images/post-288-6.jpg",
+      "/images/post-288-7.jpg",
+      "/images/post-288-8.jpg"
+    ],
+    "cover": "/images/post-288-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/pankoff_bakery/234247320919/?indoorLevel=1&ll=60.601625%2C56.836259&z=17.13",
+    "legacyIds": ["7442aa6a-28f8-4fbd-a311-67c48693a299", "288"]
+  },
+  {
+    "slug": "kstati",
+    "title": "Кстати",
+    "categorySlugs": ["coffee"],
+    "description": "Бистро, напитки и десерты.",
+    "publicationIds": ["telegram-587", "dzen-aXIvQVLAD0x-ytJv"],
+    "images": ["/guide/places/kstati.jpg"],
+    "cover": "/guide/places/kstati.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "viva",
+    "title": "V.I.V.A",
+    "categorySlugs": ["restaurants"],
+    "description": "Ресторан на Ботанике.",
+    "publicationIds": ["telegram-633", "dzen-aZ7n5qDhiU_-SBQ0"],
+    "images": ["/guide/places/viva.jpg"],
+    "cover": "/guide/places/viva.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "khinkalny-tsekh",
+    "title": "Хинкальный цех",
+    "categorySlugs": ["restaurants"],
+    "description": "Грузинское бистро на Шейнкмана, 75.",
+    "publicationIds": ["telegram-526", "dzen-aQYktcGYezWpi2JV"],
+    "images": [
+      "/guide/places/khinkalny-tsekh-cover.jpg",
+      "/guide/places/khinkalny-tsekh.jpg"
+    ],
+    "cover": "/guide/places/khinkalny-tsekh-cover.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "katso",
+    "title": "Кацо",
+    "categorySlugs": ["restaurants"],
+    "description": "Грузинский ресторан в «Гринвиче».",
+    "publicationIds": ["telegram-506", "dzen-aPyxQsEfpUs9QJIa"],
+    "images": ["/guide/places/katso-cover.jpg", "/guide/places/katso.jpg"],
+    "cover": "/guide/places/katso-cover.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "kishmish",
+    "title": "Кишмиш",
+    "categorySlugs": ["restaurants"],
+    "description": "Ресторан в «Гринвиче».",
+    "publicationIds": ["telegram-482", "dzen-aOorBYtCRjm5PrIb"],
+    "images": ["/guide/places/kishmish.jpg"],
+    "cover": "/guide/places/kishmish.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "tribu",
+    "title": "TRIBU",
+    "categorySlugs": ["restaurants"],
+    "description": "Ресторан при отеле Hyatt.",
+    "publicationIds": ["telegram-421"],
+    "images": ["/guide/places/tribu.jpg"],
+    "cover": "/guide/places/tribu.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "privet-livan",
+    "title": "Привет, Ливан!",
+    "categorySlugs": ["restaurants"],
+    "description": "Кафе с ливанской кухней и бранчами.",
+    "publicationIds": ["telegram-303"],
+    "images": [
+      "/images/post-303-0.jpg",
+      "/images/post-303-1.jpg",
+      "/images/post-303-2.jpg",
+      "/images/post-303-3.jpg",
+      "/images/post-303-4.jpg",
+      "/images/post-303-5.jpg",
+      "/images/post-303-6.jpg",
+      "/images/post-303-7.jpg",
+      "/images/post-303-8.jpg"
+    ],
+    "cover": "/images/post-303-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/privet_livan_/109796420456/?ll=60.625987%2C56.821666&z=17",
+    "legacyIds": ["01b70ec4-e941-4735-b228-2f030e9ba51e", "303"]
+  },
+  {
+    "slug": "breadway",
+    "title": "Breadway",
+    "categorySlugs": ["restaurants"],
+    "description": "Ресторан в ЖК «Нагорный», Татищева, 20/2.",
+    "publicationIds": ["telegram-133"],
+    "images": [
+      "/images/post-133-0.jpg",
+      "/images/post-133-1.jpg",
+      "/images/post-133-2.jpg",
+      "/images/post-133-3.jpg",
+      "/images/post-133-4.jpg",
+      "/images/post-133-5.jpg"
+    ],
+    "cover": "/images/post-133-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/breadway/203485164948/?ll=60.563914%2C56.835993&z=17.13",
+    "legacyIds": ["9cead462-1a07-4019-8040-f97bbf9f44fb", "133"]
+  },
+  {
+    "slug": "takie-istorii",
+    "title": "Такие истории",
+    "categorySlugs": ["restaurants"],
+    "description": "Бистро на Горького, 69/1.",
+    "publicationIds": ["telegram-128"],
+    "images": [
+      "/images/post-128-0.jpg",
+      "/images/post-128-1.jpg",
+      "/images/post-128-2.jpg",
+      "/images/post-128-3.jpg",
+      "/images/post-128-4.jpg"
+    ],
+    "cover": "/images/post-128-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/takiye_istorii/34777222584/?ll=60.610065%2C56.828638&z=15",
+    "legacyIds": ["e7dd223b-724e-403e-9258-5568a1cfb4d4", "128"]
+  },
+  {
+    "slug": "donna-olivia",
+    "title": "Donna Olivia",
+    "categorySlugs": ["restaurants"],
+    "description": "Итальянский ресторан в Екатеринбурге.",
+    "publicationIds": ["dzen-aSm65JjKb2jWhxpF"],
+    "images": [],
+    "cover": null,
+    "mapsUrl": null
+  },
+  {
+    "slug": "five-elements",
+    "title": "5 Элемент",
+    "categorySlugs": ["countryside", "baths"],
+    "description": "Глэмпинг в посёлке Рябина. В обзоре — дом «Огонь».",
+    "publicationIds": [
+      "telegram-838",
+      "dzen-atEDPTSVXl36G7bw",
+      "dzen-6ad8f3861796c105c2457d83"
+    ],
+    "images": ["/guide/places/five-elements.jpg"],
+    "cover": "/guide/places/five-elements.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "bani-sedelniki",
+    "title": "Бани в Седельниках",
+    "categorySlugs": ["baths", "countryside", "spa"],
+    "description": "Аромапарение и отдых в чане.",
+    "publicationIds": ["telegram-312"],
+    "images": [
+      "/guide/places/bani-sedelniki-cover.jpg",
+      "/images/post-312-0.jpg",
+      "/images/post-312-1.jpg",
+      "/images/post-312-2.jpg",
+      "/images/post-312-3.jpg",
+      "/images/post-312-4.jpg",
+      "/images/post-312-5.jpg"
+    ],
+    "cover": "/guide/places/bani-sedelniki-cover.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/bani_v_sedelnikakh/109350437629/"
+  },
+  {
+    "slug": "belaya-loshad",
+    "title": "Белая Лошадь",
+    "categorySlugs": ["countryside", "spa"],
+    "description": "Спа в загородном клубе.",
+    "publicationIds": ["telegram-623", "dzen-aZRS0Vlb2mCmLPut"],
+    "images": ["/guide/places/belaya-loshad.jpg"],
+    "cover": "/guide/places/belaya-loshad.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "apart-seasons-home",
+    "title": "Apart Seasons Home",
+    "categorySlugs": ["countryside", "baths"],
+    "description": "Дом для отдыха на Рощинской, 64Б.",
+    "publicationIds": ["telegram-180"],
+    "images": [
+      "/images/post-180-0.jpg",
+      "/images/post-180-1.jpg",
+      "/images/post-180-2.jpg",
+      "/images/post-180-3.jpg",
+      "/images/post-180-4.jpg",
+      "/images/post-180-5.jpg"
+    ],
+    "cover": "/images/post-180-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/apart_sizons_khoum/44776717476/?ll=60.675583%2C56.779225&mode=search&sctx=ZAAAAAgBEAAaKAoSCUERixh2Tk5AETPgLCXLa0xAEhIJ9vBlogipiz8RYabtX1lpcj8iBgABAgMEBSgKOABA15wGSAFqAnJ1nQHNzMw9oAEAqAEAvQF6zX4FwgEFw9%2B7%2BHuCAgrQkNC70LLQsNGBigIAkgIAmgIMZGVza3RvcC1tYXBz&sll=60.675583%2C56.779225&sspn=0.014079%2C0.004693&text=%D0%90%D0%BB%D0%B2%D0%B0%D1%81&z=17.13",
+    "legacyIds": ["5c02d2d2-2e49-4f3d-8917-446beffbc5b9", "180"]
+  },
+  {
+    "slug": "eco-float",
+    "title": "ECO FLOAT",
+    "categorySlugs": ["spa"],
+    "description": "Флоатинг и парный массаж на Белинского, 86.",
+    "publicationIds": ["telegram-648", "dzen-aafEfPmdZD84N4yM"],
+    "images": ["/guide/places/eco-float.jpg"],
+    "cover": "/guide/places/eco-float.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "tvoy-tai",
+    "title": "ТвойТай",
+    "categorySlugs": ["spa"],
+    "description": "Балийский массаж на Мамина-Сибиряка, 102.",
+    "publicationIds": ["telegram-610", "dzen-aYY1UxxIqQVanD0G"],
+    "images": ["/guide/places/tvoy-tai.jpg"],
+    "cover": "/guide/places/tvoy-tai.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "sky",
+    "title": "Sky Infinity Pool",
+    "categorySlugs": ["pools", "spa"],
+    "description": "Бассейн на крыше БЦ «Высоцкий».",
+    "publicationIds": [
+      "telegram-214",
+      "dzen-aPiu-Ych5Xr21u-q",
+      "dzen-6a981253466ba66194393821",
+      "dzen-693016e241b9be4962fccb36",
+      "dzen-692f34909fdab026ce058ea1"
+    ],
+    "images": [
+      "/images/post-214-0.jpg",
+      "/images/post-214-1.jpg",
+      "/images/post-214-2.jpg",
+      "/images/post-214-3.jpg",
+      "/images/post-214-4.jpg",
+      "/images/post-214-5.jpg",
+      "/images/post-214-6.jpg",
+      "/images/post-214-7.jpg",
+      "/images/post-214-8.jpg"
+    ],
+    "cover": "/images/post-214-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/sky_infinity_pool/49752647960/?display-text=%D0%B1%D0%B0%D1%81%D1%81%D0%B5%D0%B9%D0%BD%20%D0%BD%D0%B0%20%D0%BA%D1%80%D1%8B%D1%88%D0%B5&ll=60.850510%2C56.836247&mode=search&sll=60.355142%2C55.341952&sspn=0.646522%2C0.305419&text=%D0%B1%D0%B0%D1%81%D1%81%D0%B5%D0%B9%D0%BD%20%D0%BD%D0%B0%20%D0%BA%D1%80%D1%8B%D1%88%D0%B5&z=10.16",
+    "legacyIds": ["a42cabc0-ee3c-490a-907e-4891924c1733", "214"]
+  },
+  {
+    "slug": "ramada",
+    "title": "Ramada",
+    "categorySlugs": ["hotels", "spa"],
+    "description": "Отель и спа-отдых в Екатеринбурге.",
+    "publicationIds": ["telegram-235"],
+    "images": [
+      "/images/post-235-0.jpg",
+      "/images/post-235-1.jpg",
+      "/images/post-235-2.jpg",
+      "/images/post-235-3.jpg",
+      "/images/post-235-4.jpg",
+      "/images/post-235-5.jpg"
+    ],
+    "cover": "/images/post-235-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/ramada/188151233335/?ll=60.721189%2C56.775635&mode=search&sll=60.598730%2C56.831579&sspn=0.078357%2C0.036723&text=ramada&z=16.16",
+    "legacyIds": ["553a7d7f-5785-4575-99fa-51950dfb8eb8", "235"]
+  },
+  {
+    "slug": "hyatt-regency",
+    "title": "Hyatt Regency",
+    "categorySlugs": ["hotels", "spa"],
+    "description": "Отель и спа «СИАМ» в Екатеринбурге.",
+    "publicationIds": ["telegram-150", "dzen-aQOaisGYezWpivzj"],
+    "images": [
+      "/images/post-150-0.jpg",
+      "/images/post-150-1.jpg",
+      "/images/post-150-2.jpg",
+      "/images/post-150-3.jpg",
+      "/images/post-150-4.jpg",
+      "/images/post-150-5.jpg",
+      "/images/post-150-6.jpg",
+      "/images/post-150-7.jpg",
+      "/images/post-150-8.jpg"
+    ],
+    "cover": "/images/post-150-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/khayatt_ridzhensi_yekaterinburg/1262520952/?ll=60.591354%2C56.842873&mode=search&sctx=ZAAAAAgBEAAaKAoSCdbgfVUuSE5AEaxXkdEBa0xAEhIJm6p7ZHPVjD8RJSL8i6Axcz8iBgABAgMEBSgKOABA2JwGSAFqAnJ1nQHNzMw9oAEAqAEAvQEaM1rkwgEGlOukhfYFggIIQnJlYWR3YXmKAgCSAgCaAgxkZXNrdG9wLW1hcHM%3D&sll=60.591354%2C56.842873&sspn=0.048017%2C0.015980&text=Breadway&z=15.36",
+    "legacyIds": ["d9aca065-c471-4217-a8c4-c46630d65d99", "150"]
+  },
+  {
+    "slug": "ogni",
+    "title": "Огни",
+    "categorySlugs": ["workshops"],
+    "description": "Гончарная мастерская на Кузнечной, 91.",
+    "publicationIds": ["telegram-440", "dzen-aONN2LFGCxEsrfwy"],
+    "images": ["/guide/places/ogni-cover.jpg", "/guide/places/ogni.jpg"],
+    "cover": "/guide/places/ogni-cover.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "kulturnye-tsennosti",
+    "title": "Культурные ценности",
+    "categorySlugs": ["workshops"],
+    "description": "Студия рисования и занятия живописью маслом.",
+    "publicationIds": ["telegram-174"],
+    "images": [
+      "/images/post-174-0.jpg",
+      "/images/post-174-1.jpg",
+      "/images/post-174-2.jpg",
+      "/images/post-174-3.jpg",
+      "/images/post-174-4.jpg",
+      "/images/post-174-5.jpg"
+    ],
+    "cover": "/images/post-174-0.jpg",
+    "mapsUrl": null,
+    "legacyIds": ["09a5adff-b3ae-4a51-a7df-220eefc44695", "174"],
+    "rejectedMapUrls": ["https://yandex.ru/maps/org/alvas/33270198211/"]
+  },
+  {
+    "slug": "v-svoey-atmosfere",
+    "title": "В своей атмосфере",
+    "categorySlugs": ["workshops"],
+    "description": "Творческая студия на Белинского, 56.",
+    "publicationIds": ["telegram-541", "dzen-aTaJcYhg_lCizy7e"],
+    "images": ["/guide/places/v-svoey-atmosfere.jpg"],
+    "cover": "/guide/places/v-svoey-atmosfere.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "simba",
+    "title": "Парк альпак «Симба»",
+    "categorySlugs": ["animals", "family"],
+    "description": "Знакомство с альпаками и прогулка всей семьёй.",
+    "publicationIds": [
+      "telegram-733",
+      "telegram-742",
+      "dzen-ahVufabthyYwBwV6",
+      "dzen-6a188d2a94002c01589795ec",
+      "dzen-69aa58f11e04d65c976a6941"
+    ],
+    "images": ["/guide/places/simba.jpg"],
+    "cover": "/guide/places/simba.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "teikaboom",
+    "title": "TeikaBoom",
+    "categorySlugs": ["family"],
+    "description": "Парк развлечений в ТРЦ «МЕГА».",
+    "publicationIds": ["telegram-517", "dzen-aQCN6MEfpUs9QTF8"],
+    "images": ["/guide/places/teikaboom.jpg"],
+    "cover": "/guide/places/teikaboom.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "grigoryevskie-sady",
+    "title": "Григорьевские сады",
+    "categorySlugs": ["coffee", "animals", "family"],
+    "description": "Итальянское пони-кафе.",
+    "publicationIds": ["telegram-186"],
+    "images": [
+      "/images/post-186-0.jpg",
+      "/images/post-186-1.jpg",
+      "/images/post-186-2.jpg",
+      "/images/post-186-3.jpg",
+      "/images/post-186-4.jpg",
+      "/images/post-186-5.jpg"
+    ],
+    "cover": "/images/post-186-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/italyanskoye_poni_kafe/228336931402/?ll=60.946788%2C56.144231&mode=search&sctx=ZAAAAAgBEAAaKAoSCUERixh2Tk5AETPgLCXLa0xAEhIJ9vBlogipiz8RYabtX1lpcj8iBgABAgMEBSgKOABA3JwGSAFqAnJ1nQHNzMw9oAEAqAEAvQF6zX4FggIK0JDQu9Cy0LDRgYoCAJICAJoCDGRlc2t0b3AtbWFwcw%3D%3D&sll=60.946788%2C56.144231&sspn=0.353478%2C0.119831&text=%D0%90%D0%BB%D0%B2%D0%B0%D1%81&z=12.48",
+    "legacyIds": ["de7ad4a9-0b74-4b4c-84ac-f8b14d1fba8a", "186"]
+  },
+  {
+    "slug": "turba-karting",
+    "title": "Turba Karting Hall",
+    "categorySlugs": ["active"],
+    "description": "Картинг на Инновационной, 8.",
+    "publicationIds": ["telegram-619", "dzen-aYsR72EmsydU809t"],
+    "images": [
+      "/guide/places/turba-karting-cover.jpg",
+      "/guide/places/turba-karting.jpg"
+    ],
+    "cover": "/guide/places/turba-karting-cover.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "loginovo",
+    "title": "Аэродром Логиново",
+    "categorySlugs": ["active"],
+    "description": "Полёт над уральскими пейзажами.",
+    "publicationIds": ["telegram-330", "dzen-aOaSS4tCRjm5PiPt"],
+    "images": [
+      "/images/post-330-0.jpg",
+      "/images/post-330-1.jpg",
+      "/images/post-330-2.jpg",
+      "/images/post-330-3.jpg",
+      "/images/post-330-4.jpg",
+      "/images/post-330-5.jpg",
+      "/images/post-330-6.jpg",
+      "/images/post-330-7.jpg",
+      "/images/post-330-8.jpg"
+    ],
+    "cover": "/images/post-330-0.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "sinara",
+    "title": "Синара Центр",
+    "categorySlugs": ["culture"],
+    "description": "Выставки и искусство в Екатеринбурге.",
+    "publicationIds": ["telegram-673"],
+    "images": ["/guide/places/sinara-cover.jpg", "/guide/places/sinara.jpg"],
+    "cover": "/guide/places/sinara-cover.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "leto-na-zavode",
+    "title": "Лето на Заводе",
+    "categorySlugs": ["culture", "countryside"],
+    "description": "Креативный кластер в Сысерти.",
+    "publicationIds": ["telegram-401"],
+    "images": ["/guide/places/leto-na-zavode.jpg"],
+    "cover": "/guide/places/leto-na-zavode.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "vishnevy-sad",
+    "title": "Вишнёвый сад",
+    "categorySlugs": ["culture"],
+    "description": "Творческое пространство на Добролюбова, 19А.",
+    "publicationIds": ["telegram-376"],
+    "images": ["/guide/places/vishnevy-sad.jpg"],
+    "cover": "/guide/places/vishnevy-sad.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "novo-tikhvinsky",
+    "title": "Ново-Тихвинский монастырь",
+    "categorySlugs": ["walks"],
+    "description": "Прогулка на Зелёной Роще, 1.",
+    "publicationIds": ["telegram-865"],
+    "images": ["/guide/places/novo-tikhvinsky.jpg"],
+    "cover": "/guide/places/novo-tikhvinsky.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/aleksandro_nevskiy_novo_tikhvinskiy_zhenskiy_monastyr/1088409615?si=strelchuk.tanya.ekb"
+  },
+  {
+    "slug": "babkin-tort",
+    "title": "Бабкин торт",
+    "categorySlugs": ["pastry"],
+    "description": "Кондитерская, торты и десерты.",
+    "publicationIds": [
+      "telegram-491",
+      "telegram-500",
+      "dzen-aPJTdzO7xlRPLGGa",
+      "dzen-aO04Je2O5y2EdSHB"
+    ],
+    "images": ["/guide/places/babkin-tort.jpg"],
+    "cover": "/guide/places/babkin-tort.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "konditoriya",
+    "title": "Кондитория",
+    "categorySlugs": ["pastry"],
+    "description": "Праздничные торты и десерты.",
+    "publicationIds": ["telegram-385", "dzen-aOuPBYtCRjm5PuIS"],
+    "images": ["/guide/places/konditoriya.jpg"],
+    "cover": "/guide/places/konditoriya.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "sm-take-it",
+    "title": "SM Take It",
+    "categorySlugs": ["delivery"],
+    "description": "Доставка японской кухни.",
+    "publicationIds": [
+      "telegram-556",
+      "dzen-aVPmoBebV0GsfqLC",
+      "dzen-695479ae07ce6c248a088efe"
+    ],
+    "images": ["/guide/places/sm-take-it.jpg"],
+    "cover": "/guide/places/sm-take-it.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "makume",
+    "title": "MAKUME",
+    "categorySlugs": ["delivery"],
+    "description": "Доставка роллов в Екатеринбурге.",
+    "publicationIds": ["telegram-450", "dzen-aOFpW7FGCxEsrcTG"],
+    "images": ["/guide/places/makume.jpg"],
+    "cover": "/guide/places/makume.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "tanuki",
+    "title": "TANUKI",
+    "categorySlugs": ["delivery"],
+    "description": "Роллы и японская кухня с доставкой.",
+    "publicationIds": ["telegram-241"],
+    "images": [
+      "/images/post-241-0.jpg",
+      "/images/post-241-1.jpg",
+      "/images/post-241-2.jpg",
+      "/images/post-241-3.jpg",
+      "/images/post-241-4.jpg",
+      "/images/post-241-5.jpg"
+    ],
+    "cover": "/images/post-241-0.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/tanuki/1041925629/?display-text=%D0%A2%D0%B0%D0%BD%D1%83%D0%BA%D0%B8&indoorLevel=1&ll=60.608928%2C56.840143&mode=search&sll=60.721189%2C56.775635&sspn=0.020204%2C0.009195&text=%7B%22text%22%3A%22%D0%A2%D0%B0%D0%BD%D1%83%D0%BA%D0%B8%22%2C%22what%22%3A%5B%7B%22attr_name%22%3A%22chain_id%22%2C%22attr_values%22%3A%5B%226003051%22%5D%7D%5D%7D&z=17.13",
+    "legacyIds": ["607c4255-7986-4cce-ac11-5bd4b18f1bde", "241"]
+  },
+  {
+    "slug": "world-class",
+    "title": "World Class «Нагорный»",
+    "categorySlugs": ["fitness"],
+    "description": "Фитнес-клуб в Екатеринбурге.",
+    "publicationIds": ["telegram-658", "dzen-acZ5Wyaza0MxnfQQ"],
+    "images": [
+      "/guide/places/world-class-cover.jpg",
+      "/guide/places/world-class.jpg"
+    ],
+    "cover": "/guide/places/world-class-cover.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "powerhouse",
+    "title": "POWERHOUSE GYM",
+    "categorySlugs": ["fitness"],
+    "description": "Фитнес-клуб на Викулова, 24.",
+    "publicationIds": ["telegram-782"],
+    "images": ["/guide/places/powerhouse.jpg"],
+    "cover": "/guide/places/powerhouse.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "masterlika",
+    "title": "Мастерлика",
+    "categorySlugs": ["beauty"],
+    "description": "Студия красоты в ТРЦ «Успенский».",
+    "publicationIds": [
+      "telegram-856",
+      "dzen-atHkmnbGGgLjnSwW",
+      "dzen-6ad6591a57450928e28735bc"
+    ],
+    "images": ["/guide/places/masterlika.jpg"],
+    "cover": "/guide/places/masterlika.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "prizma",
+    "title": "PRIZMA",
+    "categorySlugs": ["beauty"],
+    "description": "Салон красоты на Хомякова, 12.",
+    "publicationIds": ["telegram-751", "dzen-ahbXvzpHH1WO8sKC"],
+    "images": ["/guide/places/prizma.jpg"],
+    "cover": "/guide/places/prizma.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "ton",
+    "title": "ТОН",
+    "categorySlugs": ["beauty"],
+    "description": "Студия красоты на Восточной, 56.",
+    "publicationIds": [
+      "telegram-706",
+      "dzen-agxlC192XEZ5CSUq",
+      "dzen-6a0ddb25f15e106fe5fea511"
+    ],
+    "images": ["/guide/places/ton.jpg"],
+    "cover": "/guide/places/ton.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "the-more-flowers",
+    "title": "THE MORE FLOWERS",
+    "categorySlugs": ["flowers"],
+    "description": "Цветочный магазин на Татищева, 49 и Луначарского, 139.",
+    "publicationIds": ["telegram-715"],
+    "images": ["/guide/places/the-more-flowers.jpg"],
+    "cover": "/guide/places/the-more-flowers.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "gabbiano",
+    "title": "GABBIANO",
+    "categorySlugs": ["shops"],
+    "description": "Свадебный салон на Мельковской, 3.",
+    "publicationIds": ["telegram-760", "dzen-ahhTo9W0lHxTTW55"],
+    "images": ["/guide/places/gabbiano.jpg"],
+    "cover": "/guide/places/gabbiano.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "941",
+    "title": "9:41",
+    "categorySlugs": ["shops"],
+    "description": "Магазин техники Apple.",
+    "publicationIds": ["telegram-724", "dzen-ahLIWWr6YH_1vokY"],
+    "images": ["/guide/places/941.jpg"],
+    "cover": "/guide/places/941.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "level-mens",
+    "title": "Level Men’s",
+    "categorySlugs": ["shops"],
+    "description": "Мужские костюмы на Малышева, 10, корпус 1.",
+    "publicationIds": [
+      "telegram-694",
+      "dzen-afwcEpjNCwKg_htI",
+      "dzen-69fe08dc9d8b9b363870c790"
+    ],
+    "images": ["/guide/places/level-mens.jpg"],
+    "cover": "/guide/places/level-mens.jpg",
+    "mapsUrl": "https://yandex.ru/maps/org/level_mens/22202851433?si=strelchuk.tanya.ekb"
+  },
+  {
+    "slug": "taboo-lounge",
+    "title": "Taboo Lounge",
+    "categorySlugs": ["bars"],
+    "description": "Кальян-бар с видом на город, Шейнкмана, 9.",
+    "publicationIds": ["telegram-824"],
+    "images": [
+      "/guide/places/taboo-lounge-cover.jpg",
+      "/guide/places/taboo-lounge.jpg"
+    ],
+    "cover": "/guide/places/taboo-lounge-cover.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "glavny",
+    "title": "Главный",
+    "categorySlugs": ["foodhalls"],
+    "description": "Гастромолл с разными кухнями.",
+    "publicationIds": ["telegram-394", "dzen-aOc9oItCRjm5PjTc"],
+    "images": ["/guide/places/glavny.jpg"],
+    "cover": "/guide/places/glavny.jpg",
+    "mapsUrl": null
+  },
+  {
+    "slug": "art-banket",
+    "title": "Арт-Банкет",
+    "categorySlugs": ["catering"],
+    "description": "Ресторанный кейтеринг ArtRestBand.",
+    "publicationIds": [
+      "telegram-800",
+      "dzen-aoQ6t20ZfFltKY-M",
+      "dzen-6a83ef06d7a4924debb88f3e"
+    ],
+    "images": ["/guide/places/art-banket.jpg"],
+    "cover": "/guide/places/art-banket.jpg",
+    "mapsUrl": null
+  }
+]

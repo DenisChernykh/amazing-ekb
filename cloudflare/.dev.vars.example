@@ -1,0 +1,2 @@
+APP_API_TOKEN=replace-with-a-random-secret-at-least-32-characters
+IMPORT_API_TOKEN=replace-with-a-different-secret-at-least-32-characters

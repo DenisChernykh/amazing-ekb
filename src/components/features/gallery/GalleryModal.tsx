@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import Image from "next/image";
+import { getImageUrl } from '@/utils/image-url';
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -37,9 +38,10 @@ function GalleryModal({
             <SwiperSlide key={image.id}>
               <div className="relative flex h-screen items-center justify-center">
                 <Image
-                  src={image.path || "/placeholder-image.jpg"}
+                  src={getImageUrl(image.path)}
                   alt={image.altText || "alt-text"}
                   fill
+                  sizes="100vw"
                   className="z-10 object-contain transition-transform duration-300 hover:scale-105"
                 />
               </div>

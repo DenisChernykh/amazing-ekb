@@ -1,22 +1,9 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
+const assetBase = process.env.NEXT_PUBLIC_ASSET_BASE_URL;
+if (assetBase && !/^https?:\/\//.test(assetBase)) throw new Error('NEXT_PUBLIC_ASSET_BASE_URL must be an absolute URL');
 const nextConfig: NextConfig = {
-
-	images: {
-		remotePatterns: [
-			{
-				protocol: 'https',
-				hostname: 'hqajvfrvzozkuqhnxdyl.supabase.co',
-			}
-		]
-	},
-	/* config options here */
-	experimental: {
-		serverActions: {
-			bodySizeLimit: '10mb',
-		},
-
-	},
+  images: { remotePatterns: assetBase ? [new URL('/images/**', assetBase)] : [] },
+  experimental: { serverActions: { bodySizeLimit: '10mb' } },
 };
-
 export default nextConfig;

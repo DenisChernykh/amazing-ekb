@@ -1,4 +1,4 @@
-import { getImageUrl } from "@/utils/get-supabase-storage";
+import { getImageUrl } from "@/utils/image-url";
 
 import Image from "next/image";
 import { useState } from "react";
@@ -20,11 +20,12 @@ const PostImage = ({ path, altText }: PostImageProps) => {
       <Image
         className="rounded-xl object-cover"
         fill
+        sizes="(min-width: 768px) 33vw, 50vw"
         src={src}
         alt={alt}
         role="img"
         aria-label="Фото поста"
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoad={() => setIsLoading(false)}
       />
     </>
   );

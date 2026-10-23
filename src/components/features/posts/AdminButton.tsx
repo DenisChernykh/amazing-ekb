@@ -7,8 +7,7 @@ import { useIsAdmin } from "@/hooks/useIsAdmin";
 export default function AdminButton() {
   const { isAdmin, loading } = useIsAdmin();
 
-  const isDevelopment = process.env.NODE_ENV === "development";
-  if ((loading || !isAdmin) && !isDevelopment) return null;
+  if (loading || !isAdmin) return null;
 
   return (
     <Button className="mb-4">

@@ -1,0 +1,28 @@
+{
+  "importedOn": "2026-10-23",
+  "sources": [
+    {
+      "path": "output/playwright/telegram/registry-data.json",
+      "sha256": "fd93c7b825af294647ad92aca1438761e4054d00e6364c100ffa56d11180b6f9"
+    },
+    {
+      "path": "outputs/01a167dc-721d-7300-9961-56b389567896/dzen-registry.csv",
+      "sha256": "1041d199a377474e6b77daa50ba2785c553a2f07ed9ccbd5a03e328a7eada1a8"
+    }
+  ],
+  "publicationCount": 244,
+  "placeCount": 58,
+  "identityRule": "Explicit mapping of confirmed, named venues to publication IDs. No fuzzy joins; unknown venues, personal notes, giveaways and expired events are not venue cards. Original publication metadata is retained.",
+  "mapSource": {
+    "path": ".migration/source-2026-09-26/snapshot.json",
+    "exportedAt": "2026-09-26T06:41:38.041Z",
+    "matchedPlaces": 12,
+    "excluded": [
+      {
+        "publicationId": "telegram-174",
+        "reason": "Registry identifies Культурные ценности; the older snapshot map points to Alvas. Do not restore this map from live API data."
+      }
+    ]
+  },
+  "collections": "Five editorial selections assembled from confirmed registry places; not imported original author lists."
+}

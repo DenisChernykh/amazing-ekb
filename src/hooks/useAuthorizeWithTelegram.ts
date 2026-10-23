@@ -17,13 +17,14 @@ export function useAuthorizeWithTelegram() {
 
 
 			try {
-				await fetch('/api/auth/authorize', {
+				const response = await fetch('/api/auth/authorize', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({ initData }),
 				})
+        if (response.ok) window.dispatchEvent(new Event('telegram-authenticated'));
 			} catch (e) {
 				console.error('[auth] Failed to send initData', e)
 			}

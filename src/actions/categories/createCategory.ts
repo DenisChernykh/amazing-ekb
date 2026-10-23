@@ -1,24 +1,29 @@
 'use server'
+import { isCurrentUserAdmin } from '@/lib/require-admin';
 
 
 import { getErrorMessage } from "@/utils/errorMessages";
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
+import { CATALOGUE_CACHE_TAG } from '@/shared/catalogue-cache';
 
 import { ApiResponse } from '@/utils/types';
 import { categoryRepo } from "@/di/adapters";
+import { createCategorySchema } from '@/shared/data-contracts';
 
 
 
-export const createCategory = async (name: string): Promise<ApiResponse<{ name: string }>> => {
-
-	if (!name.trim()) {
+export const createCategory = async (inputName: string): Promise<ApiResponse<{ name: string }>> => {
+  if (!await isCurrentUserAdmin()) return { success: false, error: 'FORBIDDEN', message: 'Недостаточно прав' };
+  const parsed = createCategorySchema.safeParse({ name: inputName });
+	if (!parsed.success) {
 		return {
 			success: false,
-			error: "CATEGORY_NOT_FOUND",
-			message: getErrorMessage("CATEGORY_NOT_FOUND")
+			error: "VALIDATION_ERROR",
+			message: getErrorMessage("VALIDATION_ERROR")
 
 		}
 	}
+  const { name } = parsed.data;
 	const existingResult = await categoryRepo.findCategoryByName(name)
 	if (existingResult.success) {
 		return {
@@ -41,7 +46,8 @@ export const createCategory = async (name: string): Promise<ApiResponse<{ name: 
 			error: createResult.error,
 			message: getErrorMessage(createResult.error)
 		}
-	revalidatePath('/test')
+	revalidateTag(CATALOGUE_CACHE_TAG);
+	revalidatePath('/', 'layout')
 
 	return {
 		success: true,
