@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "utro-bez-speshki",
+    "title": "Утро без спешки",
+    "eyebrow": "Кофе и завтраки",
+    "description": "Встретиться за чашкой кофе и никуда не торопиться.",
+    "intro": "Начни день за любимым столиком.",
+    "quote": "Хорошее утро начинается с маленькой паузы.",
+    "placeSlugs": [
+      "engels",
+      "comunale",
+      "muru",
+      "simple-coffee",
+      "gussi",
+      "pankoff-bakery",
+      "duo"
+    ],
+    "cover": "/guide/engels.jpg"
+  },
+  {
+    "slug": "den-dlya-sebya",
+    "title": "День для себя",
+    "eyebrow": "Бани и спа",
+    "description": "Побыть в тепле, выдохнуть и замедлиться.",
+    "intro": "Отложить дела. Побыть в тепле. Найти время, которое принадлежит только тебе.",
+    "quote": "Иногда лучший план —\nникуда не торопиться.",
+    "placeSlugs": ["sanduny-ural", "eco-float", "tvoy-tai", "sky", "ramada"],
+    "cover": "/guide/sanduny.jpg"
+  },
+  {
+    "slug": "vecher-vdvoem",
+    "title": "Вечер вдвоём",
+    "eyebrow": "Рестораны",
+    "description": "Место для встречи, которую давно откладывали.",
+    "intro": "Выбрать столик и оставить вечер свободным.",
+    "quote": "За длинными разговорами время идёт иначе.",
+    "placeSlugs": [
+      "viva",
+      "tribu",
+      "breadway",
+      "takie-istorii",
+      "khinkalny-tsekh",
+      "donna-olivia"
+    ],
+    "cover": "/images/post-133-0.jpg"
+  },
+  {
+    "slug": "za-gorod",
+    "title": "За город, за впечатлениями",
+    "eyebrow": "Небольшое путешествие",
+    "description": "Сменить обстановку и провести день чуть дальше привычных маршрутов.",
+    "intro": "Дом, баня или прогулка — идеи для выезда из города.",
+    "quote": "Иногда, чтобы переключиться,\nдостаточно сменить маршрут.",
+    "placeSlugs": [
+      "five-elements",
+      "bani-sedelniki",
+      "belaya-loshad",
+      "apart-seasons-home",
+      "leto-na-zavode"
+    ],
+    "cover": "/guide/places/five-elements.jpg"
+  },
+  {
+    "slug": "poprobovat-novoe",
+    "title": "Попробовать новое",
+    "eyebrow": "Впечатления",
+    "description": "Слепить чашку, написать картину или устроить маленькое приключение.",
+    "intro": "Мастерские, картинг и прогулки для дня, который запомнится.",
+    "quote": "У города всегда есть\nчто-то, чего ты ещё не пробовал.",
+    "placeSlugs": [
+      "ogni",
+      "kulturnye-tsennosti",
+      "turba-karting",
+      "simba",
+      "sinara"
+    ],
+    "cover": "/guide/places/ogni-cover.jpg"
+  }
+]

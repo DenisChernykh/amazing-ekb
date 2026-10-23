@@ -1,0 +1,161 @@
+[
+  {
+    "slug": "restaurants",
+    "title": "Рестораны",
+    "image": "/guide/restoran.webp",
+    "description": "Ужин, который хочется повторить.",
+    "aliases": ["Ресторан", "Рестораны"]
+  },
+  {
+    "slug": "coffee",
+    "title": "Кафе и кофейни",
+    "image": "/guide/kofeinya.webp",
+    "description": "Кофе и немного времени для себя.",
+    "aliases": ["Кафе", "Кофейня", "Кафе и кофейни"]
+  },
+  {
+    "slug": "baths",
+    "title": "Бани и термы",
+    "image": "/guide/banya.webp",
+    "description": "Тёплая пауза среди городской суеты.",
+    "aliases": ["Баня", "Бани и термы"]
+  },
+  {
+    "slug": "countryside",
+    "title": "За городом",
+    "image": "/guide/baza-dom-otdyha.webp",
+    "description": "Сменить обстановку, не уезжая далеко.",
+    "aliases": ["База/дом отдыха", "Загородный отдых"]
+  },
+  {
+    "slug": "spa",
+    "title": "Спа и массаж",
+    "image": "/guide/spa-salon.webp",
+    "description": "День, который можно посвятить себе.",
+    "aliases": ["СПА-салон", "Спа-салон", "СПА и массаж"]
+  },
+  {
+    "slug": "pools",
+    "title": "Бассейны",
+    "image": "/guide/bassein.webp",
+    "description": "Плавать и отдыхать у воды.",
+    "aliases": ["Бассейн", "Бассейны"]
+  },
+  {
+    "slug": "pastry",
+    "title": "Кондитерские",
+    "image": "/guide/konditerskaya.webp",
+    "description": "Десерт к маленькому празднику.",
+    "aliases": ["Кондитерская", "Кондитерские и пекарни"]
+  },
+  {
+    "slug": "workshops",
+    "title": "Мастер-классы",
+    "image": "/guide/goncharnaya-masterskaya.webp",
+    "description": "Попробовать новое своими руками.",
+    "aliases": ["Гончарная мастерская", "Мастер-классы"]
+  },
+  {
+    "slug": "family",
+    "title": "С детьми",
+    "image": "/guide/razvlekatelnyi-tsentr.webp",
+    "description": "Идеи для компании и всей семьи.",
+    "aliases": ["Развлекательный центр", "Детский досуг"]
+  },
+  {
+    "slug": "active",
+    "title": "Активный отдых",
+    "image": "/guide/karting.webp",
+    "description": "Когда хочется движения.",
+    "aliases": ["Картинг", "Активный отдых"]
+  },
+  {
+    "slug": "animals",
+    "title": "Парки животных",
+    "image": "/guide/zoopark.webp",
+    "description": "Прогулка с неожиданными встречами.",
+    "aliases": ["Зоопарк", "Парки животных"]
+  },
+  {
+    "slug": "hotels",
+    "title": "Отели",
+    "image": "/guide/gostinitsa.webp",
+    "description": "Небольшое путешествие внутри города.",
+    "aliases": ["Гостиница", "Отели"]
+  },
+  {
+    "slug": "culture",
+    "title": "Музеи и пространства",
+    "image": "/guide/infrastruktura-otdyha.webp",
+    "description": "Посмотреть на город по-новому.",
+    "aliases": ["Музеи и выставки", "Творческие пространства"]
+  },
+  {
+    "slug": "walks",
+    "title": "Парки и прогулки",
+    "image": "/guide/infrastruktura-otdyha.webp",
+    "description": "Выбраться из привычного маршрута.",
+    "aliases": ["Парки и прогулки", "Достопримечательности"]
+  },
+  {
+    "slug": "delivery",
+    "title": "Доставка еды",
+    "image": "/guide/dostavka-edy-i-obedov.webp",
+    "description": "Когда планы — остаться дома.",
+    "aliases": ["Доставка еды и обедов", "Доставка еды"]
+  },
+  {
+    "slug": "fitness",
+    "title": "Фитнес-клубы",
+    "image": "/guide/fitnes-klub.webp",
+    "description": "Движение в своём ритме.",
+    "aliases": ["Фитнес-клуб", "Фитнес"]
+  },
+  {
+    "slug": "beauty",
+    "title": "Салоны красоты",
+    "image": "/guide/salon-krasoty.webp",
+    "description": "Время для себя.",
+    "aliases": ["Салон красоты", "Салоны красоты и косметология"]
+  },
+  {
+    "slug": "flowers",
+    "title": "Цветочные магазины",
+    "image": "/guide/magazin-tsvetov.webp",
+    "description": "Букет с поводом и без.",
+    "aliases": ["Магазин цветов", "Цветочные магазины"]
+  },
+  {
+    "slug": "shops",
+    "title": "Магазины",
+    "image": "/guide/magazin-odezhdy.webp",
+    "description": "Найти то, что подходит именно тебе.",
+    "aliases": [
+      "Магазин одежды",
+      "Магазин электроники",
+      "Свадебный салон",
+      "Магазины"
+    ]
+  },
+  {
+    "slug": "bars",
+    "title": "Бары и кальянные",
+    "image": "/guide/restoran.webp",
+    "description": "Вечер, который можно продлить.",
+    "aliases": ["Бары и кальянные"]
+  },
+  {
+    "slug": "foodhalls",
+    "title": "Гастромоллы",
+    "image": "/guide/kafe.webp",
+    "description": "Разные вкусы под одной крышей.",
+    "aliases": ["Гастромоллы"]
+  },
+  {
+    "slug": "catering",
+    "title": "Кейтеринг",
+    "image": "/guide/sushi-bar.webp",
+    "description": "Особенный повод без хлопот.",
+    "aliases": ["Кейтеринг"]
+  }
+]

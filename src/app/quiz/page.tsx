@@ -2,9 +2,9 @@ import QuizClientComponent from "@/components/features/Quiz/QuizClientComponent"
 
 function page() {
   return (
-    <main className="container mx-auto p-4 grow flex flex-col">
+    <div className="mx-auto flex w-full max-w-[1160px] grow flex-col px-5 py-10">
       <QuizClientComponent />
-    </main>
+    </div>
   );
 }
 

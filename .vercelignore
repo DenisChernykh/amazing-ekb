@@ -8,3 +8,7 @@
 /prisma
 /public/images
 .env*
+/design
+/output
+/outputs
+/.playwright-cli
