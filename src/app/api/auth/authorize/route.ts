@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { validateInitData } from '@/lib/validate-init-data';
 import { upsertProfile } from '@/adapters/cloudflare/repositories';
 import { sessionKey } from '@/lib/session';

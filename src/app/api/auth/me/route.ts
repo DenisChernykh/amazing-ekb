@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { findProfile } from '@/adapters/cloudflare/repositories';
 import { sessionUserId } from '@/lib/session';
 import { NextRequest, NextResponse } from 'next/server';
