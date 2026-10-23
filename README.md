@@ -36,6 +36,14 @@ The tests run the bundled Worker against real local D1 in Miniflare. They cover 
 token separation, Telegram signatures, role preservation, atomic cover selection,
 repeat imports, missing assets, conflicting paths and transaction rollback.
 
+## Public catalogue caching
+
+Public post and category reads are cached for 60 seconds. Creating a post/category
+or changing its cover invalidates the shared catalogue tag immediately. Direct
+Telegram imports become visible after the next timed revalidation. Profile reads,
+authentication and administrative writes remain uncached. Category and place cards
+prefetch their destination so normal navigation can reuse the loaded page data.
+
 ## Deployment and data operations
 
 See [the migration and rollback runbook](docs/cloudflare-migration.md).

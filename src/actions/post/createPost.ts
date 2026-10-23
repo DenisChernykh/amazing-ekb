@@ -4,7 +4,8 @@ import { createPostUseCase } from '@/di/useCases';
 import { serverFormSchema } from '@/schemas';
 import { getErrorMessage } from '@/utils/errorMessages';
 import { ApiResponse } from '@/utils/types';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
+import { CATALOGUE_CACHE_TAG } from '@/shared/catalogue-cache';
 
 import { z } from 'zod';
 
@@ -31,6 +32,7 @@ export async function createPost(formData: FormData): Promise<ApiResponse<{ id: 
 	const dto: CreatePostDTO = parseResult.data
 	const result = await createPostUseCase.execute(dto)
 	if (result.success) {
+		revalidateTag(CATALOGUE_CACHE_TAG);
 		revalidatePath('/')
 		return { success: true, data: { id: result.data.id }, message: 'Пост успешно создан' }
 	} else {

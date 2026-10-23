@@ -8,6 +8,7 @@ export function CategoryCard({ category }: { category: GuideCategory }) {
   return (
     <Link
       href={`/categories/${category.slug}`}
+      prefetch={true}
       className="group flex min-h-[148px] items-stretch overflow-hidden rounded-[24px] bg-white transition-shadow hover:shadow-[0_8px_30px_-15px_#4980cc30] md:min-h-[156px]"
     >
       <div className="relative w-[86px] shrink-0 md:w-[110px]">
@@ -47,7 +48,7 @@ export function EditorialCard({
   wide?: boolean;
 }) {
   return (
-    <Link href={href} className="group block h-full">
+    <Link href={href} prefetch={true} className="group block h-full">
       <Photo
         src={cover}
         alt={title}

@@ -9,7 +9,7 @@ export async function dataRequest<T>(path: string, schema: z.ZodType<T, z.ZodTyp
   if (!base || !token) return { success: false, error: 'DATABASE_CONNECTION_ERROR' };
   try {
     const response = await fetch(new URL(path, base), {
-      ...init, cache: 'no-store', signal: AbortSignal.timeout(15_000),
+      cache: 'no-store', ...init, signal: AbortSignal.timeout(15_000),
       headers: { 'Content-Type': 'application/json', ...init.headers, Authorization: `Bearer ${token}` },
     });
     const body: unknown = await response.json();

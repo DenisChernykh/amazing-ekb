@@ -30,7 +30,6 @@ export const metadata: Metadata = {
     "Места, подборки и обзоры проекта «Стрельчук в Екатеринбурге». Идеи для завтрака, встречи, отдыха и маленького путешествия.",
 };
 
-export const dynamic = "force-dynamic";
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

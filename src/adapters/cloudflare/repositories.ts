@@ -5,16 +5,17 @@ import { ImageRepository } from '@/ports/ImageRepository';
 import { CreatePostInput, createCategoryInput } from '@/utils/types';
 import { categorySchema, idResultSchema, imageSchema, postSchema, profileSchema, telegramPostSchema, type ProfileInput } from '@/shared/data-contracts';
 import { dataRequest } from './client';
+import { catalogueCachePolicy } from '@/shared/catalogue-cache';
 
 const telegramResponse = telegramPostSchema.transform((post) => ({ ...post, date: new Date(post.date) }));
 const postResponse = postSchema.transform((post) => ({ ...post, telegramPost: { ...post.telegramPost, date: new Date(post.telegramPost.date) } }));
 
 export class CloudflarePostRepository implements PostRepository {
-  getAllPosts() { return dataRequest('/v1/posts', z.array(postResponse)); }
+  getAllPosts() { return dataRequest('/v1/posts', z.array(postResponse), catalogueCachePolicy); }
   create(input: CreatePostInput) { return dataRequest('/v1/posts', idResultSchema, { method: 'POST', body: JSON.stringify(input) }); }
 }
 export class CloudflareCategoryRepository implements CategoryRepository {
-  getAllCategories() { return dataRequest('/v1/categories', z.array(categorySchema)); }
+  getAllCategories() { return dataRequest('/v1/categories', z.array(categorySchema), catalogueCachePolicy); }
   findCategoryByName(name: string) { return dataRequest(`/v1/categories?name=${encodeURIComponent(name)}`, categorySchema); }
   create(input: createCategoryInput) { return dataRequest('/v1/categories', idResultSchema, { method: 'POST', body: JSON.stringify(input) }); }
 }

@@ -3,7 +3,8 @@ import { isCurrentUserAdmin } from '@/lib/require-admin';
 
 
 import { getErrorMessage } from "@/utils/errorMessages";
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
+import { CATALOGUE_CACHE_TAG } from '@/shared/catalogue-cache';
 
 import { ApiResponse } from '@/utils/types';
 import { categoryRepo } from "@/di/adapters";
@@ -45,6 +46,7 @@ export const createCategory = async (inputName: string): Promise<ApiResponse<{ n
 			error: createResult.error,
 			message: getErrorMessage(createResult.error)
 		}
+	revalidateTag(CATALOGUE_CACHE_TAG);
 	revalidatePath('/', 'layout')
 
 	return {
