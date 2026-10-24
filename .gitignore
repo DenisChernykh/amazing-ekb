@@ -44,3 +44,11 @@ next-env.d.ts
 venv
 
 /user_session/
+node_modules/
+.pnpm-store/
+.env
+.env.local
+.env.production
+.dev.vars
+*.log
+!*.example
